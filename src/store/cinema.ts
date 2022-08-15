@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-const cinema = defineStore("cinema", {
+export const cinema = defineStore("cinema", {
   state: () => ({}),
   getters: {},
   actions: {},

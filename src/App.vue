@@ -5,7 +5,7 @@
 <script lang="ts">
 import HomeView from "@/views/HomeView.vue";
 import { defineComponent } from "vue";
-import "./assets/styles/style.scss";
+import "@/assets/styles/style.scss";
 
 export default defineComponent({
   name: "App",
