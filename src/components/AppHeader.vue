@@ -1,45 +1,45 @@
 <template>
   <header :class="$style.header">
     <div :class="$style.logo">
-      <router-link :to="{ name: 'homeview' }" :class="$style['logo-link']">
+      <router-link :class="$style['logo-link']" :to="{ name: 'homeview' }">
         <img
-          src="@/assets/img/logo.svg"
-          width="56"
-          height="56"
           alt="logo"
           class="logo-img"
+          height="56"
+          src="@/assets/img/logo.svg"
+          width="56"
         />
       </router-link>
     </div>
     <nav :class="$style.menu">
       <ul :class="$style['menu-list']">
         <li class="menu-item">
-          <router-link :to="{ name: 'homeview' }" :class="$style['menu-link']"
+          <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }"
             >Home
           </router-link>
         </li>
         <li class="menu-item">
-          <router-link :to="{ name: 'movies' }" :class="$style['menu-link']"
+          <router-link :class="$style['menu-link']" :to="{ name: 'movies' }"
             >Movies
           </router-link>
         </li>
         <li class="menu-item">
-          <router-link :to="{ name: 'series' }" :class="$style['menu-link']"
+          <router-link :class="$style['menu-link']" :to="{ name: 'series' }"
             >Series
           </router-link>
         </li>
       </ul>
     </nav>
     <div class="login">
-      <button class="sign-in" type="button">
+      <ButtonBase class="sign-in" type="button">
         <img
-          src="@/assets/img/icons/account.svg"
-          width="24"
-          height="24"
           alt="account"
           class="sign-in-icon"
+          height="24"
+          src="@/assets/img/icons/account.svg"
+          width="24"
         />
-      </button>
+      </ButtonBase>
     </div>
   </header>
 </template>

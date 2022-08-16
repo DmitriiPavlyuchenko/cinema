@@ -1,8 +1,8 @@
 <template>
   <aside :class="$style['aside-menu']">
-    <button :class="[$style['menu-open']]" type="button" @click="openMenu">
+    <ButtonBase :class="[$style['menu-open']]" type="button" @click="openMenu">
       Menu
-    </button>
+    </ButtonBase>
     <ul v-if="openedMenu" :class="$style['menu-list']">
       <li :class="$style['menu-item']">
         <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }">
@@ -13,12 +13,12 @@
         </router-link>
       </li>
       <li :class="$style['menu-item']">
-        <button :class="$style['menu-link']" type="button">
+        <ButtonBase :class="$style['menu-link']" type="button">
           <IconBase height="18" icon-name="filter" width="18">
             <IconFilter />
           </IconBase>
           <span>Filter</span>
-        </button>
+        </ButtonBase>
       </li>
       <li :class="$style['menu-item']">
         <router-link :class="$style['menu-link']" :to="{ name: 'settings' }">
@@ -50,7 +50,13 @@ import IconFilter from "@/components/icons/IconFilter.vue";
 
 export default defineComponent({
   name: "AppAsideMenu",
-  components: { IconFilter, IconSettings, IconExit, IconBase, IconHome },
+  components: {
+    IconFilter,
+    IconSettings,
+    IconExit,
+    IconBase,
+    IconHome,
+  },
   data() {
     return {
       isMenuOpen: false,
