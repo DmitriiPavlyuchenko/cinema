@@ -1,29 +1,39 @@
 <template>
   <aside :class="$style['aside-menu']">
-    <h2 :class="$style['menu-title']">Menu</h2>
-    <ul :class="$style['menu-list']">
+    <button :class="[$style['menu-open']]" type="button" @click="openMenu">
+      Menu
+    </button>
+    <ul v-if="openedMenu" :class="$style['menu-list']">
       <li :class="$style['menu-item']">
-        <router-link :to="{ name: 'homeview' }" :class="$style['menu-link']">
-          <IconBase width="15" height="15" icon-name="home">
+        <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }">
+          <IconBase height="15" icon-name="home" width="15">
             <IconHome />
           </IconBase>
-          Home
+          <span>Home</span>
         </router-link>
       </li>
       <li :class="$style['menu-item']">
-        <router-link :to="{ name: 'settings' }" :class="$style['menu-link']">
-          <IconBase width="19" height="19" icon-name="settings">
+        <button :class="$style['menu-link']" type="button">
+          <IconBase height="18" icon-name="filter" width="18">
+            <IconFilter />
+          </IconBase>
+          <span>Filter</span>
+        </button>
+      </li>
+      <li :class="$style['menu-item']">
+        <router-link :class="$style['menu-link']" :to="{ name: 'settings' }">
+          <IconBase height="19" icon-name="settings" width="19">
             <IconSettings />
           </IconBase>
-          Settings
+          <span>Settings</span>
         </router-link>
       </li>
       <li :class="$style['menu-item']">
-        <router-link :to="{ name: 'homeview' }" :class="$style['menu-link']">
-          <IconBase width="15" height="15" icon-name="exit">
+        <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }">
+          <IconBase height="15" icon-name="exit" width="15">
             <IconExit />
           </IconBase>
-          Exit
+          <span>Exit</span>
         </router-link>
       </li>
     </ul>
@@ -36,42 +46,97 @@ import IconHome from "@/components/icons/IconHome.vue";
 import IconBase from "@/components/ui/IconBase.vue";
 import IconSettings from "@/components/icons/IconSettings.vue";
 import IconExit from "@/components/icons/IconExit.vue";
+import IconFilter from "@/components/icons/IconFilter.vue";
 
 export default defineComponent({
   name: "AppAsideMenu",
-  components: { IconSettings, IconExit, IconBase, IconHome },
+  components: { IconFilter, IconSettings, IconExit, IconBase, IconHome },
+  data() {
+    return {
+      isMenuOpen: false,
+    };
+  },
+  computed: {
+    openedMenu(): boolean {
+      return this.isMenuOpen;
+    },
+  },
+  methods: {
+    openMenu() {
+      this.isMenuOpen ? (this.isMenuOpen = false) : (this.isMenuOpen = true);
+    },
+  },
 });
 </script>
 
 <style lang="scss" module>
 .aside-menu {
-  max-width: 10%;
   padding: 1rem 1rem 1rem 0;
+  max-width: 20%;
 
-  .menu-title {
+  .menu-open {
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    color: $grey;
+    transition: color 0.5s;
+  }
+
+  .menu-open:hover {
+    color: $text-color;
   }
 
   .menu-list {
     display: flex;
-    gap: 2rem;
     flex-direction: column;
     padding-top: 2rem;
+    transition: all 0.5s ease-in-out;
+    animation-name: slide;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(-30%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  .menu-item {
+    display: flex;
   }
 
   .menu-link {
     font-size: 0.8rem;
     color: $grey;
-    display: flex;
     transition: color 0.5s;
+    display: flex;
   }
 
   .menu-link > svg {
-    width: 25%;
+    margin-right: 1rem;
+  }
+
+  .menu-item:not(:last-child) {
+    padding-bottom: 2rem;
+  }
+
+  .menu-item:nth-last-child(2) {
+    padding-bottom: 1.5rem;
+  }
+
+  .menu-item:last-child {
+    padding-top: 1.5rem;
   }
 
   .menu-link:hover {
     color: $text-color;
+  }
+
+  .active {
+    display: flex;
   }
 }
 </style>

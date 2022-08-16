@@ -57,7 +57,7 @@ export default {
   align-items: center;
 
   .logo {
-    flex: 0 0 10%;
+    flex: 0 0 20%;
     padding-right: 1rem;
   }
 
@@ -92,12 +92,6 @@ export default {
 
   .login {
     flex: 1 0 10%;
-  }
-
-  .sign-in {
-  }
-
-  &__sign-in-icon {
   }
 }
 </style>

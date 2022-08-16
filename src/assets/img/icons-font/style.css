@@ -10,7 +10,7 @@
   font-display: block;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="icon-"]:before, [class*=" icon-"]:before, [class*=" icon-"]:after, [class^="icon-"]:after {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'font-icon' !important;
   speak: never;
@@ -30,7 +30,7 @@
   color: #fff;
 }
 
-.icon-arrow-left:before {
+.icon-arrow-left:after {
   content: "\e901";
   color: #fff;
 }
@@ -50,7 +50,7 @@
   color: #fff;
 }
 
-.icon-arrow-right:before {
+.icon-arrow-right:after {
   content: "\e908";
   color: #fff;
 }
