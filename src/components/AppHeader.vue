@@ -31,7 +31,7 @@
       </ul>
     </nav>
     <div class="login">
-      <ButtonBase class="sign-in" type="button">
+      <ButtonBase class="sign-in" type="button" @click="openModal = true">
         <img
           alt="account"
           class="sign-in-icon"
@@ -40,6 +40,10 @@
           width="24"
         />
       </ButtonBase>
+      <ModalBase
+        :showModal="openModal"
+        @closeModal="openModal = false"
+      ></ModalBase>
     </div>
   </header>
 </template>
