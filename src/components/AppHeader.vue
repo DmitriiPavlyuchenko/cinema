@@ -31,7 +31,7 @@
       </ul>
     </nav>
     <div class="login">
-      <ButtonBase class="sign-in" type="button" @click="openModal = true">
+      <ButtonBase class="sign-in" type="button" @click="isModalOpen = true">
         <img
           alt="account"
           class="sign-in-icon"
@@ -40,17 +40,23 @@
           width="24"
         />
       </ButtonBase>
-      <ModalBase
-        :showModal="openModal"
-        @closeModal="openModal = false"
-      ></ModalBase>
+      <SignInModal :isModalOpen="isModalOpen" @closeModal="isModalOpen = false">
+      </SignInModal>
     </div>
   </header>
 </template>
 
 <script>
+import SignInModal from "@/components/modals/SignInModal";
 export default {
   name: "AppHeader",
+  components: { SignInModal },
+
+  data() {
+    return {
+      isModalOpen: false,
+    };
+  },
 };
 </script>
 
@@ -69,9 +75,6 @@ export default {
     display: inline-block;
   }
 
-  &__logo-img {
-  }
-
   .menu {
     flex-grow: 1;
   }
@@ -79,9 +82,6 @@ export default {
   .menu-list {
     display: flex;
     gap: 2rem;
-  }
-
-  &__menu-item {
   }
 
   .menu-link {

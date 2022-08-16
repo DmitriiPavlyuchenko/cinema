@@ -1,17 +1,21 @@
 <template>
-  <transition name="modal">
-    <div :class="$style['modal-mask']" :showModal="showModal">
+  <transition appear name="modal">
+    <div v-if="isModalOpen" :class="$style['modal-mask']">
       <div :class="$style['modal-wrapper']">
-        <div :class="$style['modal-container']">
-          <div :class="['modal-header']">
+        <div
+          :class="$style['modal-container']"
+          role="dialog"
+          @showModal="$emit('showModal')"
+        >
+          <div :class="$style['modal-header']">
             <slot name="header"></slot>
           </div>
-          <div :class="['modal-body']">
+          <div :class="$style['modal-body']">
             <slot name="body"></slot>
           </div>
           <div :class="$style['modal-footer']">
             <slot name="footer">
-              <ButtonBase :class="$style['modal-button']"> OK </ButtonBase>
+              <ButtonBase :class="$style['modal-button']"> OK</ButtonBase>
             </slot>
           </div>
           <ButtonBase
@@ -27,16 +31,16 @@
 
 <script>
 import { defineComponent } from "vue";
-import ButtonBase from "@/components/ui/ButtonBase";
 
 export default defineComponent({
   name: "ModalBase",
-  components: { ButtonBase },
-  data() {
-    return {
-      showModal: false,
-    };
+  props: {
+    isModalOpen: {
+      type: Boolean,
+      required: true,
+    },
   },
+  emits: ["closeModal"],
 });
 </script>
 
@@ -50,7 +54,7 @@ export default defineComponent({
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 
 .modal-wrapper {
@@ -60,23 +64,20 @@ export default defineComponent({
 
 .modal-container {
   position: relative;
-  width: 300px;
-  margin: 0px auto;
+  max-width: 25rem;
+  min-height: 10rem;
+  margin: 0 auto;
   padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
+  background-color: #ffffffe0;
+  border-radius: 0.5rem;
+  transition: all 0.7s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-
-.modal-body {
-  margin: 20px 0;
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .modal-footer {
@@ -85,31 +86,39 @@ export default defineComponent({
   justify-content: center;
 }
 
+.modal-body {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
 .modal-button {
   color: $black;
   display: inline-block;
 }
 
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
 .modal-close {
   position: absolute;
   color: $black;
-  font-size: 1rem;
+  font-size: 1.5rem;
   background-color: initial;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.modal-close:hover {
+  color: $purple;
+}
+</style>
+
+<style lang="scss">
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
 }
 </style>
