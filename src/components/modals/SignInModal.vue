@@ -12,7 +12,7 @@
       >
         <label :class="$style['email']">
           <InputBase
-            v-model="data.email"
+            v-model="user.email"
             :class="$style['email']"
             placeholder="Email"
             type="text"
@@ -20,7 +20,7 @@
         </label>
         <label :class="$style['password']">
           <InputBase
-            v-model="data.password"
+            v-model="user.password"
             :class="$style['password']"
             :type="typeInput"
             placeholder="Password"
@@ -39,13 +39,16 @@
       </form>
     </template>
     <template #footer>
-      <ButtonBase :class="$style.enter" type="submit">Enter</ButtonBase>
+      <ButtonBase :class="$style.enter" type="submit" @click="signIn"
+        >Enter
+      </ButtonBase>
     </template>
   </ModalBase>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 import IconEye from "@/components/icons/IconEye";
 import IconEyeBlocked from "@/components/icons/IconEyeBlocked";
 
@@ -64,7 +67,7 @@ export default defineComponent({
   emits: ["closeModal"],
   data() {
     return {
-      data: {
+      user: {
         email: "",
         password: "",
       },
@@ -80,6 +83,17 @@ export default defineComponent({
     },
   },
   methods: {
+    ...mapActions("signIn", ["authorization"]),
+
+    async signIn() {
+      try {
+        const response = await this.authorization(this.user);
+        console.log(response);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
     changeType() {
       const password = this.type === typePassword;
       if (password) {

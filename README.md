@@ -1,4 +1,4 @@
-# cinema
+# cinemaStore
 
 ## Project setup
 ```
