@@ -1,5 +1,5 @@
 <template>
-  <transition appear name="modal">
+  <ZoomTransition>
     <div v-if="isModalOpen" :class="$style['modal-mask']">
       <div :class="$style['modal-wrapper']">
         <div
@@ -26,14 +26,16 @@
         </div>
       </div>
     </div>
-  </transition>
+  </ZoomTransition>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import ZoomTransition from "@/components/transitions/ZoomTransition";
 
 export default defineComponent({
   name: "ModalBase",
+  components: { ZoomTransition },
   props: {
     isModalOpen: {
       type: Boolean,
@@ -108,17 +110,5 @@ export default defineComponent({
 
 .modal-close:hover {
   color: $purple;
-}
-</style>
-
-<style lang="scss">
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.modal-enter,
-.modal-leave-to {
-  opacity: 0;
 }
 </style>
