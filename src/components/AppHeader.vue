@@ -40,8 +40,13 @@
           width="24"
         />
       </ButtonBase>
-      <SignInModal :isModalOpen="isModalOpen" @closeModal="isModalOpen = false">
-      </SignInModal>
+      <teleport to="body">
+        <SignInModal
+          :isModalOpen="isModalOpen"
+          @closeModal="isModalOpen = false"
+        >
+        </SignInModal>
+      </teleport>
     </div>
   </header>
 </template>
