@@ -1,5 +1,5 @@
 <template>
-  <ModalBase :isModalOpen="isModalOpen" @closeModal="$emit('closeModal')">
+  <ModalBase :isModalOpen="isModalOpen" @closeModal="close">
     <template #header>
       <span :class="$style['modal-title']">Authorization</span>
     </template>
@@ -87,6 +87,10 @@ export default defineComponent({
       } else {
         this.type = typePassword;
       }
+    },
+
+    close() {
+      this.$emit("closeModal");
     },
   },
 });

@@ -1,12 +1,8 @@
 <template>
   <ZoomTransition>
-    <div v-if="isModalOpen" :class="$style['modal-mask']">
+    <div v-if="isModalOpen" :class="$style['modal-mask']" @click="close">
       <div :class="$style['modal-wrapper']">
-        <div
-          :class="$style['modal-container']"
-          role="dialog"
-          @showModal="$emit('showModal')"
-        >
+        <div :class="$style['modal-container']" role="dialog" @click.stop>
           <div :class="$style['modal-header']">
             <slot name="header"></slot>
           </div>
@@ -18,9 +14,7 @@
               <ButtonBase :class="$style['modal-button']"> OK</ButtonBase>
             </slot>
           </div>
-          <ButtonBase
-            :class="$style['modal-close']"
-            @click="$emit('closeModal')"
+          <ButtonBase :class="$style['modal-close']" @click="close"
             >x
           </ButtonBase>
         </div>
@@ -43,6 +37,24 @@ export default defineComponent({
     },
   },
   emits: ["closeModal"],
+  mounted() {
+    document.addEventListener("keydown", this.handleKeydown);
+  },
+  beforeUnmount() {
+    document.removeEventListener("keydown", this.handleKeydown);
+  },
+
+  methods: {
+    handleKeydown(event) {
+      if (this.isModalOpen && event.key === "Escape") {
+        this.close();
+      }
+    },
+
+    close() {
+      this.$emit("closeModal");
+    },
+  },
 });
 </script>
 
@@ -64,11 +76,12 @@ export default defineComponent({
 }
 
 .modal-wrapper {
+  width: 100%;
 }
 
 .modal-container {
   position: relative;
-  max-width: 30rem;
+  max-width: 22.5rem;
   width: 100%;
   min-height: 10rem;
   margin: 0 auto;
