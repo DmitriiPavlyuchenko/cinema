@@ -52,28 +52,30 @@ export default defineComponent({
   z-index: 9998;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  display: table;
   transition: opacity 0.5s ease;
 }
 
 .modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .modal-container {
   position: relative;
-  max-width: 25rem;
+  max-width: 30rem;
+  width: 100%;
   min-height: 10rem;
   margin: 0 auto;
   padding: 20px 30px;
   background-color: #ffffffe0;
   border-radius: 0.5rem;
   transition: all 0.7s ease;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-header {
