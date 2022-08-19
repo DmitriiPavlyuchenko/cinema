@@ -10,9 +10,7 @@
             <slot name="body"></slot>
           </div>
           <div :class="$style['modal-footer']">
-            <slot name="footer">
-              <ButtonBase :class="$style['modal-button']"> OK</ButtonBase>
-            </slot>
+            <slot name="footer"> </slot>
           </div>
           <ButtonBase :class="$style['modal-close']" @click="close"
             >x

@@ -8,7 +8,7 @@
         :class="$style['sign_in-form']"
         autocomplete="off"
         name="sign-in"
-        @event.prevent
+        @submit.prevent
       >
         <label :class="$style['email']">
           <InputBase
@@ -36,12 +36,10 @@
             </IconBase>
           </button>
         </label>
+        <ButtonBase :class="$style.enter" type="submit" @click="signIn"
+          >Enter
+        </ButtonBase>
       </form>
-    </template>
-    <template #footer>
-      <ButtonBase :class="$style.enter" type="submit" @click="signIn"
-        >Enter
-      </ButtonBase>
     </template>
   </ModalBase>
 </template>
