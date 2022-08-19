@@ -63,8 +63,8 @@ export default defineComponent({
   data() {
     return {
       user: {
-        email: "",
-        password: "",
+        email: "dorshichek1996@gmail.com",
+        password: "4140269Rus",
       },
       type: typePassword,
     };
@@ -87,10 +87,16 @@ export default defineComponent({
           this.$toast.success("Authorization success", {
             duration: 3000,
           });
+          this.user = {
+            email: "",
+            password: "",
+          };
+          this.close();
         } else {
           throw "Error";
         }
-      } catch {
+      } catch (e) {
+        console.log(e);
         this.$toast.error("Oops, something went wrong", {
           duration: 3000,
         });
@@ -99,6 +105,7 @@ export default defineComponent({
 
     changeType() {
       const password = this.type === typePassword;
+
       if (password) {
         this.type = typeText;
       } else {

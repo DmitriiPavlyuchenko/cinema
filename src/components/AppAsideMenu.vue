@@ -28,7 +28,7 @@
           <span>Settings</span>
         </router-link>
       </li>
-      <li :class="$style['menu-item']">
+      <li v-if="isAuth" :class="$style['menu-item']">
         <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }">
           <IconBase height="15" icon-name="exit" width="15">
             <IconExit />
@@ -42,11 +42,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState } from "vuex";
 import IconHome from "@/components/icons/IconHome.vue";
-import IconBase from "@/components/ui/IconBase.vue";
 import IconSettings from "@/components/icons/IconSettings.vue";
 import IconExit from "@/components/icons/IconExit.vue";
 import IconFilter from "@/components/icons/IconFilter.vue";
+import { signIn } from "@/api/sign-in/sign-in";
+import { setItem } from "@/helpers/persistanceStorage";
+import { KEYS } from "@/constants/localStorage";
+import axios from "axios";
 
 export default defineComponent({
   name: "AppAsideMenu",
@@ -54,7 +58,6 @@ export default defineComponent({
     IconFilter,
     IconSettings,
     IconExit,
-    IconBase,
     IconHome,
   },
   data() {
@@ -63,6 +66,7 @@ export default defineComponent({
     };
   },
   computed: {
+    ...mapState("signIn", ["isAuth"]),
     openedMenu(): boolean {
       return this.isMenuOpen;
     },
@@ -129,11 +133,11 @@ export default defineComponent({
     padding-bottom: 2rem;
   }
 
-  .menu-item:nth-last-child(2) {
+  .menu-item:nth-child(3) {
     padding-bottom: 1.5rem;
   }
 
-  .menu-item:last-child {
+  .menu-item:nth-child(4) {
     padding-top: 1.5rem;
   }
 

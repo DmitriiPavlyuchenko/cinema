@@ -2,6 +2,8 @@ import { SignIn } from "@/store/authorization/sign-in-interface";
 import { signIn } from "@/api/sign-in/sign-in";
 import { Module } from "vuex";
 import { RootStore } from "@/store/root-store";
+import { getItem, setItem } from "@/helpers/persistanceStorage";
+import { KEYS } from "@/constants/localStorage";
 
 export const signInStore: Module<SignIn, RootStore> = {
   namespaced: true,
@@ -23,9 +25,20 @@ export const signInStore: Module<SignIn, RootStore> = {
         const response = await signIn(data);
         if (response.status === 200) {
           context.commit("AUTHORIZATION_SUCCESS");
+          setItem(KEYS.TOKEN, response.headers.authorization);
           return true;
         }
-      } catch {
+      } catch (error: any) {
+        const result = error.response.data.message;
+        context.commit("AUTHORIZATION_FAILED");
+        return result;
+      }
+    },
+    isUserLoggedIn(context) {
+      const token = getItem(KEYS.TOKEN);
+      if (token) {
+        context.commit("AUTHORIZATION_SUCCESS");
+      } else {
         context.commit("AUTHORIZATION_FAILED");
       }
     },

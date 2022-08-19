@@ -30,7 +30,7 @@
         </li>
       </ul>
     </nav>
-    <div class="login">
+    <div v-if="!isAuth" class="login">
       <ButtonBase class="sign-in" type="button" @click="isModalOpen = true">
         <img
           alt="account"
@@ -52,7 +52,9 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import SignInModal from "@/components/modals/SignInModal";
+
 export default {
   name: "AppHeader",
   components: { SignInModal },
@@ -61,6 +63,9 @@ export default {
     return {
       isModalOpen: false,
     };
+  },
+  computed: {
+    ...mapState("signIn", ["isAuth"]),
   },
 };
 </script>
