@@ -1,11 +1,24 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { SIGN_IN } from "@/constants/api";
+import { getItem } from "@/helpers/persistanceStorage";
+import { KEYS } from "@/constants/localStorage";
 
 const instance = axios.create({
   baseURL: SIGN_IN.SERVER_URL,
-  headers: { "Access-Control-Allow-Origin": "*" },
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
 });
 
-export default instance;
+instance.interceptors.request.use(
+  (config: AxiosRequestConfig): AxiosRequestConfig => {
+    const token = getItem(KEYS.TOKEN);
+    const authorizationToken = token ? token : "";
+    config.headers!.Authorization = authorizationToken;
+    console.log("Auth", authorizationToken);
+    console.log(config);
+    return config;
+  }
+);
 
-// axios.defaults.baseURL = SIGN_IN.SERVER_URL;
+export default instance;
