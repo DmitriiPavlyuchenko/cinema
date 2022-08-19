@@ -23,11 +23,10 @@ export const signInStore: Module<SignIn, RootStore> = {
         const response = await signIn(data);
         if (response.status === 200) {
           context.commit("AUTHORIZATION_SUCCESS");
-          return console.log("auth");
+          return true;
         }
-      } catch (e) {
+      } catch {
         context.commit("AUTHORIZATION_FAILED");
-        return console.log(e);
       }
     },
   },

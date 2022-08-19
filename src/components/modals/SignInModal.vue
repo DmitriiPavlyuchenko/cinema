@@ -4,16 +4,12 @@
       <span :class="$style['modal-title']">Authorization</span>
     </template>
     <template #body>
-      <form
-        :class="$style['sign_in-form']"
-        autocomplete="off"
-        name="sign-in"
-        @submit.prevent
-      >
+      <form :class="$style['sign_in-form']" name="sign-in" @submit.prevent>
         <label :class="$style['email']">
           <InputBase
             v-model="user.email"
             :class="$style['email']"
+            autocomplete="off"
             placeholder="Email"
             type="text"
           ></InputBase>
@@ -23,6 +19,7 @@
             v-model="user.password"
             :class="$style['password']"
             :type="typeInput"
+            autocomplete="off"
             placeholder="Password"
           ></InputBase>
           <button
@@ -86,9 +83,17 @@ export default defineComponent({
     async signIn() {
       try {
         const response = await this.authorization(this.user);
-        console.log(response);
-      } catch (e) {
-        console.log(e);
+        if (response) {
+          this.$toast.success("Authorization success", {
+            duration: 3000,
+          });
+        } else {
+          throw "Error";
+        }
+      } catch {
+        this.$toast.error("Oops, something went wrong", {
+          duration: 3000,
+        });
       }
     },
 
