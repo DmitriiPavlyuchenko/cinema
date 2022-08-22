@@ -3,8 +3,8 @@
     <div :class="$style.logo">
       <router-link :class="$style['logo-link']" :to="{ name: 'homeview' }">
         <img
+          :class="$style['logo-img']"
           alt="logo"
-          class="logo-img"
           height="56"
           src="@/assets/img/logo.svg"
           width="56"
@@ -83,6 +83,22 @@ export default {
 
   .logo-link {
     display: inline-block;
+  }
+
+  .logo-img {
+    animation-name: logo-rotation;
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes logo-rotation {
+    from {
+      transform: rotate(0grad);
+    }
+    to {
+      transform: rotate(400grad);
+    }
   }
 
   .menu {
