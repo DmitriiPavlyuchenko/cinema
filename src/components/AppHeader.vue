@@ -94,10 +94,10 @@ export default {
 
   @keyframes logo-rotation {
     from {
-      transform: rotate(0grad);
+      transform: rotate(0grad) rotateY(0grad) rotateX(0grad);
     }
     to {
-      transform: rotate(400grad);
+      transform: rotate(400grad) rotateY(400grad) rotateX(400grad);
     }
   }
 
