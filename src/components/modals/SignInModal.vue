@@ -63,8 +63,8 @@ export default defineComponent({
   data() {
     return {
       user: {
-        email: "dorshichek1996@gmail.com",
-        password: "4140269Rus",
+        email: "",
+        password: "",
       },
       type: typePassword,
     };

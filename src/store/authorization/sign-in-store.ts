@@ -18,6 +18,9 @@ export const signInStore: Module<SignIn, RootStore> = {
     AUTHORIZATION_FAILED(state) {
       state.isAuth = false;
     },
+    LOGOUT(state) {
+      state.isAuth = false;
+    },
   },
   actions: {
     async authorization(context, data: Authorization) {
@@ -41,6 +44,10 @@ export const signInStore: Module<SignIn, RootStore> = {
       } else {
         context.commit("AUTHORIZATION_FAILED");
       }
+    },
+    logout(context) {
+      localStorage.removeItem(KEYS.TOKEN);
+      context.commit("LOGOUT");
     },
   },
 };
