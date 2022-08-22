@@ -39,7 +39,7 @@ export const signInStore: Module<SignIn, RootStore> = {
     },
     isUserLoggedIn(context) {
       const token = getItem(KEYS.TOKEN);
-      if (token) {
+      if (token.length > 0) {
         context.commit("AUTHORIZATION_SUCCESS");
       } else {
         context.commit("AUTHORIZATION_FAILED");

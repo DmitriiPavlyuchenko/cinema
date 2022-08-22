@@ -15,8 +15,6 @@ instance.interceptors.request.use(
     const token = getItem(KEYS.TOKEN);
     const authorizationToken = token ? token : "";
     config.headers!.Authorization = authorizationToken;
-    console.log("Auth", authorizationToken);
-    console.log(config);
     return config;
   }
 );
