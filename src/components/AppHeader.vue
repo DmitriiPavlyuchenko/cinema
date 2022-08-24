@@ -14,18 +14,13 @@
     <nav :class="$style.menu">
       <ul :class="$style['menu-list']">
         <li class="menu-item">
-          <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }"
-            >Home
-          </router-link>
-        </li>
-        <li class="menu-item">
           <router-link :class="$style['menu-link']" :to="{ name: 'movies' }"
-            >Movies
+            >Кино
           </router-link>
         </li>
         <li class="menu-item">
           <router-link :class="$style['menu-link']" :to="{ name: 'series' }"
-            >Series
+            >Сериалы
           </router-link>
         </li>
       </ul>

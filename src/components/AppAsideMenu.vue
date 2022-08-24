@@ -1,23 +1,15 @@
 <template>
   <aside :class="$style['aside-menu']">
     <ButtonBase :class="[$style['menu-open']]" type="button" @click="openMenu">
-      Menu
+      Меню
     </ButtonBase>
     <ul v-if="openedMenu" :class="$style['menu-list']">
-      <li :class="$style['menu-item']">
-        <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }">
-          <IconBase height="15" icon-name="home" width="15">
-            <IconHome />
-          </IconBase>
-          <span>Home</span>
-        </router-link>
-      </li>
       <li :class="$style['menu-item']">
         <ButtonBase :class="$style['menu-link']" type="button">
           <IconBase height="18" icon-name="filter" width="18">
             <IconFilter />
           </IconBase>
-          <span>Filter</span>
+          <span>Фильтры</span>
         </ButtonBase>
       </li>
       <li :class="$style['menu-item']">
@@ -25,7 +17,7 @@
           <IconBase height="19" icon-name="settings" width="19">
             <IconSettings />
           </IconBase>
-          <span>Settings</span>
+          <span>Настройки</span>
         </router-link>
       </li>
       <li v-if="isAuth" :class="$style['menu-item']" @click="logout">
@@ -33,7 +25,7 @@
           <IconBase height="15" icon-name="exit" width="15">
             <IconExit />
           </IconBase>
-          <span>Exit</span>
+          <span>Выход</span>
         </router-link>
       </li>
     </ul>
@@ -43,7 +35,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
-import IconHome from "@/components/icons/IconHome.vue";
 import IconSettings from "@/components/icons/IconSettings.vue";
 import IconExit from "@/components/icons/IconExit.vue";
 import IconFilter from "@/components/icons/IconFilter.vue";
@@ -54,7 +45,6 @@ export default defineComponent({
     IconFilter,
     IconSettings,
     IconExit,
-    IconHome,
   },
   data() {
     return {
