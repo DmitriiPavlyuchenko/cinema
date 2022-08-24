@@ -4,6 +4,7 @@ import { Module } from "vuex";
 import { RootStore } from "@/store/root-store";
 import { getItem, setItem } from "@/helpers/persistanceStorage";
 import { KEYS } from "@/constants/localStorage";
+import { SERVER_RESPONSE } from "@/constants/server-code";
 
 export const signInStore: Module<SignIn, RootStore> = {
   namespaced: true,
@@ -26,7 +27,7 @@ export const signInStore: Module<SignIn, RootStore> = {
     async authorization(context, data: Authorization) {
       try {
         const response = await signIn(data);
-        if (response.status === 200) {
+        if (response.status === SERVER_RESPONSE.CODE_200) {
           context.commit("AUTHORIZATION_SUCCESS");
           setItem(KEYS.TOKEN, response.headers.authorization);
           return true;

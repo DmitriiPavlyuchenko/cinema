@@ -79,7 +79,7 @@ export default defineComponent({
 <style lang="scss" module>
 .aside-menu {
   padding: 1rem 1rem 1rem 0;
-  max-width: 20%;
+  min-width: 20%;
 
   .menu-open {
     font-size: 1.2rem;
