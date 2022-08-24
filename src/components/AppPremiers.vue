@@ -28,7 +28,6 @@
                 >Год выпуска: {{ premier.year }}</span
               >
               <div :class="$style.genres">
-                Жанры:
                 <span
                   v-for="genres in premier.genres"
                   :key="genres"
@@ -36,6 +35,9 @@
                   >{{ genres.genre }}</span
                 >
               </div>
+              <router-link :class="$style.information" :to="{ name: 'series' }"
+                >Подробнее
+              </router-link>
             </div>
           </div>
         </li>
@@ -50,6 +52,8 @@ import { mapActions, mapGetters } from "vuex";
 
 export default defineComponent({
   name: "AppPremiers",
+  components: {},
+
   created() {
     this.getPremiers();
   },
@@ -93,7 +97,7 @@ export default defineComponent({
     background-repeat: no-repeat;
     position: relative;
     z-index: 5;
-    border-radius: 2rem;
+    border-radius: 1rem;
     align-items: center;
     padding: 1rem;
     gap: 2.5rem;
@@ -107,11 +111,11 @@ export default defineComponent({
     right: 0;
     left: 0;
     bottom: 0;
-    opacity: 0.4;
+    opacity: 0.5;
     z-index: -1;
     background-color: $black;
     width: 100%;
-    border-radius: 2rem;
+    border-radius: 1rem;
   }
 
   .premier-poster {
@@ -122,22 +126,22 @@ export default defineComponent({
   .premier-image {
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
-    border-radius: 2rem;
+    object-fit: contain;
+    border-radius: 1rem;
     background-color: $background-color;
   }
 
   .premier-description {
     display: flex;
     flex-direction: column;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     gap: 0.8rem;
   }
 
   .premier-name {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    font-style: italic;
+    line-height: 80%;
   }
 
   .year-issue {
@@ -148,8 +152,23 @@ export default defineComponent({
 
   .genres {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.3rem;
     flex-wrap: wrap;
+  }
+
+  .information {
+    border: 1px solid $text-color;
+    display: flex;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    max-width: 8rem;
+    border-radius: 0.8rem;
+  }
+
+  .information:hover {
+    background: $hover-button;
   }
 }
 </style>
