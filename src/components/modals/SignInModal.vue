@@ -1,7 +1,7 @@
 <template>
   <ModalBase :isModalOpen="isModalOpen" @closeModal="close">
     <template #header>
-      <span :class="$style['modal-title']">Authorization</span>
+      <span :class="$style['modal-title']">Авторизация</span>
     </template>
     <template #body>
       <form :class="$style['sign_in-form']" name="sign-in" @submit.prevent>
@@ -10,7 +10,7 @@
             v-model="user.email"
             :class="$style['email']"
             autocomplete="off"
-            placeholder="Email"
+            placeholder="Почта"
             type="text"
           ></InputBase>
         </label>
@@ -20,7 +20,7 @@
             :class="$style['password']"
             :type="typeInput"
             autocomplete="off"
-            placeholder="Password"
+            placeholder="Пароль"
           ></InputBase>
           <button
             :class="$style['show-password']"
@@ -34,7 +34,7 @@
           </button>
         </label>
         <ButtonBase :class="$style.enter" type="submit" @click="signIn"
-          >Enter
+          >Вход
         </ButtonBase>
       </form>
     </template>
@@ -84,7 +84,7 @@ export default defineComponent({
       try {
         const response = await this.authorization(this.user);
         if (response) {
-          this.$toast.success("Authorization success", {
+          this.$toast.success("Добро пожаловать", {
             duration: 3000,
           });
           this.user = {
@@ -97,7 +97,7 @@ export default defineComponent({
         }
       } catch (e) {
         console.log(e);
-        this.$toast.error("Oops, something went wrong", {
+        this.$toast.error("Упс, что-то пошло не так", {
           duration: 3000,
         });
       }
