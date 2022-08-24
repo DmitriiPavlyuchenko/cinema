@@ -1,30 +1,47 @@
 <template>
-  <h2 :class="$style['premiers-title']">Premiers</h2>
-  <ul :class="$style.premiers">
-    <li
-      v-for="premier in premiers"
-      :key="premier.kinopoiskId"
-      :class="$style['premier-item']"
-    >
-      <div
-        :class="$style['premier-card']"
-        :style="{ backgroundImage: `url(${premier.posterUrl}` }"
-      >
-        <div :class="$style['premier-poster']">
-          <img
-            :alt="premier.nameEn"
-            :class="$style['premier-image']"
-            :src="premier.posterUrlPreview"
-          />
-        </div>
-        <div :class="$style['premier-description']">
-          <span :class="$style['premier-name']">{{ premier.nameEn }}</span>
-          <span :class="$style['year-issue']">{{ premier.year }}</span>
-          <span :class="$style['realise-date']">{{ premier.premiereRu }}</span>
-        </div>
-      </div>
-    </li>
-  </ul>
+  <div :class="$style.premiers">
+    <h2 :class="$style['premiers-title']">Премьеры</h2>
+    <div :class="$style['premiers-wrapper']">
+      <ul :class="$style['premiers-list']">
+        <li
+          v-for="premier in premiers"
+          :key="premier.kinopoiskId"
+          :class="$style['premier-item']"
+        >
+          <div
+            :class="$style['premier-card']"
+            :style="{ backgroundImage: `url(${premier.posterUrl}` }"
+          >
+            <div :class="$style['premier-poster']">
+              <img
+                :alt="premier.nameRu"
+                :class="$style['premier-image']"
+                :src="premier.posterUrlPreview"
+              />
+            </div>
+            <div :class="$style['premier-description']">
+              <span :class="$style['premier-name']">{{ premier.nameRu }}</span>
+              <span :class="$style['realise-date']"
+                >Дата выхода в России: {{ premier.premiereRu }}</span
+              >
+              <span :class="$style['year-issue']"
+                >Год выпуска: {{ premier.year }}</span
+              >
+              <div :class="$style.genres">
+                Жанры:
+                <span
+                  v-for="genres in premier.genres"
+                  :key="genres"
+                  :class="$style['genres-item']"
+                  >{{ genres.genre }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -46,13 +63,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-.premiers-title {
-}
-
 .premiers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  padding-top: 1rem;
+
+  .premiers-wrapper {
+  }
+
+  .premiers-list {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+
+  .premiers-title {
+  }
 
   .premier-item {
     width: 30rem;
@@ -73,6 +97,7 @@ export default defineComponent({
     align-items: center;
     padding: 1rem;
     gap: 2.5rem;
+    background-color: #727272;
   }
 
   .premier-card:before {
@@ -99,6 +124,7 @@ export default defineComponent({
     max-height: 100%;
     object-fit: cover;
     border-radius: 2rem;
+    background-color: $background-color;
   }
 
   .premier-description {
@@ -118,6 +144,12 @@ export default defineComponent({
   }
 
   .realise-date {
+  }
+
+  .genres {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
   }
 }
 </style>
