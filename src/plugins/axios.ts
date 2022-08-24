@@ -1,12 +1,13 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { SIGN_IN } from "@/constants/api";
+import { API } from "@/constants/api";
 import { getItem } from "@/helpers/persistanceStorage";
 import { KEYS } from "@/constants/localStorage";
 
 const instance = axios.create({
-  baseURL: SIGN_IN.SERVER_URL,
+  baseURL: API.SERVER_URL,
   headers: {
     "Access-Control-Allow-Origin": "*",
+    "X-API-KEY": "5b48cc31-a6c5-45a2-9ba7-a7def2190d4d",
   },
 });
 
