@@ -1,1 +1,3 @@
-interface Cinema {}
+export interface Cinema {
+  premieres: null | [];
+}
