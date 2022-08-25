@@ -156,6 +156,13 @@ export default defineComponent({
     flex-wrap: wrap;
   }
 
+  .genres-item {
+    border: 0.05rem solid $text-color;
+    border-radius: 0.4rem;
+    padding: 0.3rem 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
   .information {
     border: 1px solid $text-color;
     display: flex;
