@@ -1,12 +1,10 @@
 import instance from "@/plugins/axios";
 import { AxiosResponse } from "axios";
 import { API } from "@/constants/api";
-import { PremiersInterface } from "@/api/cinema/premiers/premiers-interface";
+import { Premiers } from "@/api/cinema/premiers/premiers-interface";
 
-export const getPremiers = (
-  date: PremiersInterface
-): Promise<AxiosResponse> => {
+export const getPremiers = (premier: Premiers): Promise<AxiosResponse> => {
   return instance.get(
-    API.PREMIERS_PATH + `?year=${date.year}&month=${date.month}`
+    API.PREMIERS_PATH + `?year=${premier.year}&month=${premier.month}`
   );
 };
