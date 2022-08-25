@@ -1,7 +1,7 @@
 <template>
   <header :class="$style.header">
     <div :class="$style.logo">
-      <router-link :class="$style['logo-link']" :to="{ name: 'homeview' }">
+      <router-link :class="$style['logo-link']" :to="{ name: 'home-view' }">
         <img
           :class="$style['logo-img']"
           alt="logo"

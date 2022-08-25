@@ -3,11 +3,12 @@ import HomeView from "@/views/HomeView.vue";
 import AppMovies from "@/components/AppMovies.vue";
 import AppSerials from "@/components/AppSerials.vue";
 import AppSettings from "@/components/AppSettings.vue";
+import AppFilmInformation from "@/components/AppFilmInformation.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "homeview",
+    name: "home-view",
     component: HomeView,
   },
   {
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/settings",
     name: "settings",
     component: AppSettings,
+  },
+  {
+    path: "/:id",
+    name: "film_information",
+    component: AppFilmInformation,
   },
 ];
 

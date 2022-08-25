@@ -35,7 +35,12 @@
                   >{{ genres.genre }}</span
                 >
               </div>
-              <router-link :class="$style.information" :to="{ name: 'series' }"
+              <router-link
+                :class="$style.information"
+                :to="{
+                  name: 'film_information',
+                  params: { id: premier.kinopoiskId },
+                }"
                 >Подробнее
               </router-link>
             </div>
@@ -53,7 +58,6 @@ import { mapActions, mapGetters } from "vuex";
 export default defineComponent({
   name: "AppPremiers",
   components: {},
-
   created() {
     this.getPremiers();
   },

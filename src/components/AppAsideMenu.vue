@@ -21,7 +21,7 @@
         </router-link>
       </li>
       <li v-if="isAuth" :class="$style['menu-item']" @click="logout">
-        <router-link :class="$style['menu-link']" :to="{ name: 'homeview' }">
+        <router-link :class="$style['menu-link']" :to="{ name: 'home-view' }">
           <IconBase height="15" icon-name="exit" width="15">
             <IconExit />
           </IconBase>

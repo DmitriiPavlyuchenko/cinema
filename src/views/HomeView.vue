@@ -1,13 +1,5 @@
 <template>
-  <div class="container">
-    <AppHeader />
-    <main :class="$style.main">
-      <AppAsideMenu />
-      <div v-if="!isAuth" :class="$style['main-view']">
-        <AppPremiers />
-      </div>
-    </main>
-  </div>
+  <AppPremiers />
 </template>
 
 <script lang="ts">
@@ -19,19 +11,11 @@ import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "HomeView",
-  components: { AppPremiers, AppHeader, AppAsideMenu },
+  components: { AppPremiers },
   getters: {
     ...mapGetters("signIn", ["isAuth"]),
   },
 });
 </script>
 
-<style lang="scss" module>
-.main {
-  display: flex;
-}
-
-.main-view {
-  flex: 0 1 100%;
-}
-</style>
+<style lang="scss" module></style>
