@@ -8,6 +8,7 @@ import {
   getMovie,
   getSimilarMovies,
   getStaff,
+  getTrailer,
 } from "@/api/cinema/movie/movie-information";
 
 export const cinemaStore: Module<Cinema, RootStore> = {
@@ -17,6 +18,7 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     movieInformation: null,
     staff: null,
     similarMovies: null,
+    trailer: null,
   }),
   getters: {
     premiers(state) {
@@ -31,6 +33,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     similarMovies(state) {
       return state.similarMovies;
     },
+    trailer(state) {
+      return state.trailer;
+    },
   },
   mutations: {
     SET_PREMIERS(state, payload) {
@@ -44,6 +49,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
     SET_SIMILAR_MOVIES(state, payload) {
       state.similarMovies = payload;
+    },
+    SET_TRAILER(state, payload) {
+      state.trailer = payload;
     },
   },
   actions: {
@@ -87,6 +95,16 @@ export const cinemaStore: Module<Cinema, RootStore> = {
         const response = await getSimilarMovies(id);
         if (response.status === SERVER_RESPONSE.CODE_200) {
           context.commit("SET_SIMILAR_MOVIES", response.data);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async getTrailer(context, id) {
+      try {
+        const response = await getTrailer(id);
+        if (response.status === SERVER_RESPONSE.CODE_200) {
+          context.commit("SET_TRAILER", response.data);
         }
       } catch (e) {
         console.log(e);

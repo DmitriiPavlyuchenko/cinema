@@ -11,5 +11,9 @@ export const getStaff = (id: number): Promise<AxiosResponse> => {
 };
 
 export const getSimilarMovies = (id: number): Promise<AxiosResponse> => {
-  return instance.get(API.SIMILAR_MOVIES_INFORMATION + `${id}/similars`);
+  return instance.get(API.MOVIE_INFORMATION + `${id}/similars`);
+};
+
+export const getTrailer = (id: number): Promise<AxiosResponse> => {
+  return instance.get(API.MOVIE_INFORMATION + `${id}/videos`);
 };

@@ -5,5 +5,4 @@ export const API = {
   PREMIERS_PATH: "/api/v2.2/films/premieres",
   MOVIE_INFORMATION: "/api/v2.2/films/",
   STAFF_INFORMATION: "/api/v1/staff",
-  SIMILAR_MOVIES_INFORMATION: "/api/v2.2/films/",
 };

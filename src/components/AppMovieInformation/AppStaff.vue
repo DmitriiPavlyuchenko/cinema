@@ -1,7 +1,7 @@
 <template>
   <div class="actors-wrapper">
     <ul class="actor-list">
-      <li v-for="actor in staff" :key="actor.staffId" class="actor">
+      <li v-for="actor in tenStaff" :key="actor.staffId" class="actor">
         {{ actor.nameRu }}
       </li>
     </ul>
@@ -14,16 +14,16 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "AppStaff",
   props: {
-    AppStaff: {
+    staff: {
       type: Object,
       required: true,
     },
   },
-  watch: {
-    staff() {
-      const tenElements = 10;
-      const actors = this.staff.splice(tenElements);
-      this.staff = actors;
+  computed: {
+    tenStaff() {
+      const firstElement = 0;
+      const lastElement = 10;
+      return this.staff.slice(firstElement, lastElement);
     },
   },
 });

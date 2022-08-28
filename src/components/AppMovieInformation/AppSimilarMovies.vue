@@ -10,7 +10,7 @@
       </li>
     </ul>
     <span v-if="hasSimilarMovies" class="similar-movies-empty"
-      >Извините, мы не смогли найти подходящих фильмов</span
+      >Извините, мы не смогли найти похожих фильмов</span
     >
   </div>
 </template>
