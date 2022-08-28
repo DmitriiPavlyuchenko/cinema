@@ -38,7 +38,7 @@
               <router-link
                 :class="$style.information"
                 :to="{
-                  name: 'film_information',
+                  name: 'movie_information',
                   params: { id: premier.kinopoiskId },
                 }"
                 >Подробнее

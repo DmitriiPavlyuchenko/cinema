@@ -5,37 +5,45 @@ import { getPremiers } from "@/api/cinema/premiers/premiers";
 import { convertDateMonth } from "@/helpers/date";
 import { SERVER_RESPONSE } from "@/constants/server-code";
 import {
-  getFilmInformation,
-  getStaffInformation,
-} from "@/api/cinema/film/film-information";
+  getMovie,
+  getSimilarMovies,
+  getStaff,
+} from "@/api/cinema/movie/movie-information";
 
 export const cinemaStore: Module<Cinema, RootStore> = {
   namespaced: true,
   state: () => ({
     premieres: null,
-    filmInformation: null,
+    movieInformation: null,
     staff: null,
+    similarMovies: null,
   }),
   getters: {
     premiers(state) {
       return state.premieres;
     },
-    filmInformation(state) {
-      return state.filmInformation;
+    movieInformation(state) {
+      return state.movieInformation;
     },
     staff(state) {
       return state.staff;
+    },
+    similarMovies(state) {
+      return state.similarMovies;
     },
   },
   mutations: {
     SET_PREMIERS(state, payload) {
       state.premieres = payload;
     },
-    SET_FILM_INFORMATION(state, payload) {
-      state.filmInformation = payload;
+    SET_MOVIE(state, payload) {
+      state.movieInformation = payload;
     },
-    SET_STAFF_INFORMATION(state, payload) {
+    SET_STAFF(state, payload) {
       state.staff = payload;
+    },
+    SET_SIMILAR_MOVIES(state, payload) {
+      state.similarMovies = payload;
     },
   },
   actions: {
@@ -54,11 +62,11 @@ export const cinemaStore: Module<Cinema, RootStore> = {
         console.log(e);
       }
     },
-    async getFilmInformation(context, id) {
+    async getMovieInformation(context, id) {
       try {
-        const response = await getFilmInformation(id);
+        const response = await getMovie(id);
         if (response.status === SERVER_RESPONSE.CODE_200) {
-          context.commit("SET_FILM_INFORMATION", response.data);
+          context.commit("SET_MOVIE", response.data);
         }
       } catch (e) {
         console.log(e);
@@ -66,9 +74,19 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
     async getStaffInformation(context, id) {
       try {
-        const response = await getStaffInformation(id);
+        const response = await getStaff(id);
         if (response.status === SERVER_RESPONSE.CODE_200) {
-          context.commit("SET_STAFF_INFORMATION", response.data);
+          context.commit("SET_STAFF", response.data);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async getSimilarMovies(context, id) {
+      try {
+        const response = await getSimilarMovies(id);
+        if (response.status === SERVER_RESPONSE.CODE_200) {
+          context.commit("SET_SIMILAR_MOVIES", response.data);
         }
       } catch (e) {
         console.log(e);

@@ -3,7 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import AppMovies from "@/components/AppMovies.vue";
 import AppSerials from "@/components/AppSerials.vue";
 import AppSettings from "@/components/AppSettings.vue";
-import AppFilmInformation from "@/components/AppFilmInformation.vue";
+import AppMovie from "@/components/AppMovieInformation/AppMovie.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,8 +28,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/:id",
-    name: "film_information",
-    component: AppFilmInformation,
+    name: "movie_information",
+    component: AppMovie,
   },
 ];
 
