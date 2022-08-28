@@ -3,13 +3,14 @@
     <div class="film-poster"></div>
     <div class="film-information">
       <h3 class="film-title">{{ filmInformation.nameRu }}</h3>
-      <div
-        v-for="country in filmInformation.countries"
-        :key="country.country"
-        class="film-country-wrapper"
-      >
+      <div class="film-country-wrapper">
         <span>Страна: </span
-        ><span class="film-country">{{ country.country }}</span>
+        ><span
+          v-for="country in filmInformation.countries"
+          :key="country.country"
+          class="film-country"
+          >{{ country.country }}</span
+        >
       </div>
       <span class="film-description">{{ filmInformation.description }}</span>
       <div
@@ -22,6 +23,19 @@
       <span class="film-time"
         >Время {{ filmInformation.filmLength }} мин. / {{ convertedTime }}</span
       >
+      <span class="rating-age-limits">Возраст: {{ convertedAge }}</span>
+      <span class="year">Год производства {{ filmInformation.year }}</span>
+      <span class="rating">Рейтинг {{ filmInformation.ratingKinopoisk }}</span>
+      <span class="vote-count"
+        >Количество голосов{{ filmInformation.ratingKinopoiskVoteCount }}</span
+      >
+    </div>
+    <div class="actors-wrapper">
+      <ul class="actor-list">
+        <li v-for="actor in staff" :key="actor.staffId" class="actor">
+          {{ actor.nameRu }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -39,9 +53,10 @@ export default defineComponent({
   },
   created() {
     this.getFilmInformation(this.id);
+    this.getStaffInformation(this.id);
   },
   computed: {
-    ...mapGetters("cinema", ["filmInformation"]),
+    ...mapGetters("cinema", ["filmInformation", "staff"]),
     convertedTimeInMinutes() {
       return this.filmInformation.filmLength % 60;
     },
@@ -51,11 +66,24 @@ export default defineComponent({
     convertedTime() {
       return this.convertedTimeInHours + ":" + this.convertedTimeInMinutes;
     },
+    convertedAge() {
+      const regExp = /\d+/;
+      const filmInformation = this.filmInformation;
+      const ratingAge = filmInformation.ratingAgeLimits.match(regExp);
+      return ratingAge + " +";
+    },
+  },
+  watch: {
+    staff() {
+      const tenElements = 10;
+      const actors = this.staff.splice(tenElements);
+      this.staff = actors;
+    },
   },
   methods: {
-    ...mapActions("cinema", ["getFilmInformation"]),
+    ...mapActions("cinema", ["getFilmInformation", "getStaffInformation"]),
   },
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" module></style>

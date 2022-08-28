@@ -4,13 +4,17 @@ import { Cinema } from "@/store/cinema/cinema-interface";
 import { getPremiers } from "@/api/cinema/premiers/premiers";
 import { convertDateMonth } from "@/helpers/date";
 import { SERVER_RESPONSE } from "@/constants/server-code";
-import { getFilmInformation } from "@/api/cinema/film/film-information";
+import {
+  getFilmInformation,
+  getStaffInformation,
+} from "@/api/cinema/film/film-information";
 
 export const cinemaStore: Module<Cinema, RootStore> = {
   namespaced: true,
   state: () => ({
     premieres: null,
     filmInformation: null,
+    staff: null,
   }),
   getters: {
     premiers(state) {
@@ -19,6 +23,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     filmInformation(state) {
       return state.filmInformation;
     },
+    staff(state) {
+      return state.staff;
+    },
   },
   mutations: {
     SET_PREMIERS(state, payload) {
@@ -26,6 +33,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
     SET_FILM_INFORMATION(state, payload) {
       state.filmInformation = payload;
+    },
+    SET_STAFF_INFORMATION(state, payload) {
+      state.staff = payload;
     },
   },
   actions: {
@@ -49,6 +59,16 @@ export const cinemaStore: Module<Cinema, RootStore> = {
         const response = await getFilmInformation(id);
         if (response.status === SERVER_RESPONSE.CODE_200) {
           context.commit("SET_FILM_INFORMATION", response.data);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async getStaffInformation(context, id) {
+      try {
+        const response = await getStaffInformation(id);
+        if (response.status === SERVER_RESPONSE.CODE_200) {
+          context.commit("SET_STAFF_INFORMATION", response.data);
         }
       } catch (e) {
         console.log(e);
