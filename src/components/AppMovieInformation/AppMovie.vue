@@ -1,9 +1,9 @@
 <template>
   <div class="movie">
-    <!--    <AppMovieInformation :movieInformation="movieInformation" />-->
+    <AppMovieInformation :movieInformation="movieInformation" />
     <!--    <AppSimilarMovies :similarMovies="similarMovies" />-->
     <!--    <AppStaff :staff="staff" />-->
-    <AppTrailer :trailer="trailer" />
+    <!--    <AppTrailer :trailer="trailer" />-->
   </div>
 </template>
 
@@ -23,10 +23,10 @@ export default {
     };
   },
   created() {
-    // this.getMovieInformation(this.id);
+    this.getMovieInformation(this.id);
     // this.getSimilarMovies(this.id);
     // this.getStaffInformation(this.id);
-    this.getTrailer(this.id);
+    // this.getTrailer(this.id);
   },
   computed: {
     ...mapGetters("cinema", [
