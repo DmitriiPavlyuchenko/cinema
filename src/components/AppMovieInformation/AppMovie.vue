@@ -1,7 +1,7 @@
 <template>
-  <div class="movie">
-    <AppMovieInformation :movieInformation="movieInformation" />
-    <!--    <AppSimilarMovies :similarMovies="similarMovies" />-->
+  <div :class="$style.movie">
+    <!--    <AppMovieInformation :movieInformation="movieInformation" />-->
+    <AppSimilarMovies :similarMovies="similarMovies" />
     <!--    <AppStaff :staff="staff" />-->
     <!--    <AppTrailer :trailer="trailer" />-->
   </div>
@@ -16,15 +16,16 @@ import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 
 export default {
   name: "AppMovie",
-  components: { AppTrailer, AppSimilarMovies, AppMovieInformation, AppStaff },
+  components: { AppSimilarMovies },
+  // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformation
   data() {
     return {
       id: this.$route.params.id,
     };
   },
   created() {
-    this.getMovieInformation(this.id);
-    // this.getSimilarMovies(this.id);
+    // this.getMovieInformation(this.id);
+    this.getSimilarMovies(this.id);
     // this.getStaffInformation(this.id);
     // this.getTrailer(this.id);
   },
@@ -50,4 +51,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" module>
+.movie {
+  padding: 1rem 0;
+}
+</style>
