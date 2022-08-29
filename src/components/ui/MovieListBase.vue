@@ -5,9 +5,9 @@
     </h2>
     <div :class="$style['movie-list-wrapper']">
       <ul :class="$style['list']">
-        <ul
+        <li
           v-for="movie in movies"
-          :key="movie.kinopoiskId"
+          :key="[movie.kinopoiskId ? movie.kinopoiskId : movie.filmId]"
           :class="$style['list-item']"
         >
           <div
@@ -23,7 +23,7 @@
             </div>
             <div :class="$style['movie-description']">
               <span :class="$style['movie-name']">{{ movie.nameRu }}</span>
-              <span :class="$style['realise-date']"
+              <span v-if="movie.premiereRu" :class="$style['realise-date']"
                 >Дата выхода в России: {{ movie.premiereRu }}</span
               >
               <span :class="$style['year-issue']"
@@ -38,16 +38,28 @@
                 >
               </div>
               <router-link
+                v-if="movie.kinopoiskId"
                 :class="$style.information"
                 :to="{
                   name: 'movie_information',
-                  params: { id: movie.kinopoiskId },
+                  params: {
+                    id: movie.kinopoiskId,
+                  },
+                }"
+                >Подробнее
+              </router-link>
+              <router-link
+                v-if="movie.filmId"
+                :class="$style.information"
+                :to="{
+                  name: 'movie_information',
+                  params: { id: movie.filmId },
                 }"
                 >Подробнее
               </router-link>
             </div>
           </div>
-        </ul>
+        </li>
       </ul>
     </div>
   </div>

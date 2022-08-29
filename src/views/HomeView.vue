@@ -1,17 +1,17 @@
 <template>
   <AppPremiers />
+  <AppTopMovies />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppHeader from "@/components/AppHeader.vue";
-import AppAsideMenu from "@/components/AppAsideMenu.vue";
 import AppPremiers from "@/components/AppPremiers.vue";
 import { mapGetters } from "vuex";
+import AppTopMovies from "@/components/AppTopMovies.vue";
 
 export default defineComponent({
   name: "HomeView",
-  components: { AppPremiers },
+  components: { AppTopMovies, AppPremiers },
   getters: {
     ...mapGetters("signIn", ["isAuth"]),
   },

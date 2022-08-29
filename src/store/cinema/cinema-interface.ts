@@ -4,4 +4,5 @@ export interface Cinema {
   staff: null | object[];
   similarMovies: null | object[];
   trailer: null | object[];
+  topMovies: null | object[];
 }

@@ -8,6 +8,7 @@ import {
   getMovie,
   getSimilarMovies,
   getStaff,
+  getTopMovies,
   getTrailer,
 } from "@/api/cinema/movie/movie-information";
 
@@ -19,6 +20,7 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     staff: null,
     similarMovies: null,
     trailer: null,
+    topMovies: null,
   }),
   getters: {
     premiers(state) {
@@ -36,6 +38,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     trailer(state) {
       return state.trailer;
     },
+    topMovies(state) {
+      return state.topMovies;
+    },
   },
   mutations: {
     SET_PREMIERS(state, payload) {
@@ -52,6 +57,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
     SET_TRAILER(state, payload) {
       state.trailer = payload;
+    },
+    SET_TOP_MOVIES(state, payload) {
+      state.topMovies = payload;
     },
   },
   actions: {
@@ -105,6 +113,19 @@ export const cinemaStore: Module<Cinema, RootStore> = {
         const response = await getTrailer(id);
         if (response.status === SERVER_RESPONSE.CODE_200) {
           context.commit("SET_TRAILER", response.data);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async getTopMovies(context) {
+      try {
+        const minPage = 1;
+        const maxPage = 13;
+        const page = Math.round(Math.random() * (maxPage - minPage) + minPage);
+        const response = await getTopMovies(page);
+        if (response.status === SERVER_RESPONSE.CODE_200) {
+          context.commit("SET_TOP_MOVIES", response.data);
         }
       } catch (e) {
         console.log(e);
