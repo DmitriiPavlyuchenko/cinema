@@ -106,7 +106,7 @@ export default {
   }
 
   .menu-link {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     color: $grey;
     transition: color 0.5s;
   }
