@@ -6,17 +6,37 @@
         <h3 :class="$style['movie-title']">
           {{ movieInformation.nameRu }} ({{ movieInformation.year }})
         </h3>
-        <span :class="$style['movie-title-en']"
+        <span
+          v-if="movieInformation.nameOriginal"
+          :class="$style['movie-title-en']"
           >{{ movieInformation.nameOriginal }}
           <span :class="$style['rating-age-limits']">{{
             convertedRatingAge
           }}</span>
         </span>
+        <div :class="$style['movie-preview-wrapper']">
+          <div :class="$style['movie-poster-wrapper']">
+            <img
+              :alt="movieInformation.nameRu"
+              :class="$style['movie-poster']"
+              :src="movieInformation.posterUrlPreview"
+            />
+          </div>
+          <div :class="$style['rating-wrapper']">
+            <span :class="$style.rating">{{
+              movieInformation.ratingKinopoisk
+            }}</span>
+            <span :class="$style['vote-count']"
+              >{{ movieInformation.ratingKinopoiskVoteCount }} оценок</span
+            >
+          </div>
+        </div>
         <p :class="$style['movie-short-description']">
           {{ movieInformation.shortDescription }}
         </p>
       </div>
       <ul :class="$style['movie-body']">
+        <h4 :class="$style['movie-about']">О фильме</h4>
         <li class="year-wrapper">
           <span class="production-year">Год производства</span>
           <span class="year">{{ movieInformation.year }}</span>
@@ -38,11 +58,11 @@
               :key="genre"
               :class="$style.genre"
             >
-              {{ genre.genre }}
+              <span>{{ genre.genre }}</span>
             </li>
           </ul>
         </ul>
-        <li class="slogan-wrapper">
+        <li v-if="movieInformation.slogan" class="slogan-wrapper">
           <span class="slogan-title">Слоган</span>
           <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
         </li>
@@ -57,13 +77,8 @@
           >
         </li>
       </ul>
-      <span class="rating">Рейтинг {{ movieInformation.ratingKinopoisk }}</span>
-      <span class="vote-count"
-        >Количество голосов{{ movieInformation.ratingKinopoiskVoteCount }}</span
-      >
-
-      <div class="movie-footer">
-        <span class="movie-description">{{
+      <div :class="$style['movie-footer']">
+        <span :class="$style['movie-description']">{{
           movieInformation.description
         }}</span>
       </div>
@@ -125,7 +140,7 @@ export default defineComponent({
 }
 
 .movie-body {
-  padding-top: 1rem;
+  padding-top: 3rem;
   font-size: 0.75rem;
   line-height: 130%;
   display: flex;
@@ -155,6 +170,53 @@ export default defineComponent({
 
 .slogan {
   display: inline-block;
+}
+
+.movie-footer {
+  padding-top: 3rem;
+}
+
+.movie-description {
+  line-height: 160%;
+}
+
+.movie-preview-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-poster-wrapper {
+}
+
+.movie-poster {
+  max-width: 12rem;
+  display: block;
+  width: 100%;
+}
+
+.rating {
+  background: $gold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.vote-count {
+  color: $grey;
+  font-size: 0.65rem;
+  line-height: 0.9rem;
+}
+
+.rating-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.movie-about {
+  font-weight: 600;
+  font-size: 1.5rem;
 }
 
 .rating-age-limits {
