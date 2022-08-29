@@ -80,7 +80,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-.movie-list {
+.movie-list:first-child {
   padding-top: 1rem;
 }
 
@@ -165,7 +165,6 @@ export default defineComponent({
 }
 
 .genre-item {
-  border: 0.05rem solid $text-color;
   border-radius: 0.4rem;
   padding: 0.3rem 0.5rem;
   background: rgba(255, 255, 255, 0.15);

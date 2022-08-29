@@ -38,5 +38,8 @@ export default defineComponent({
 
 .main-view {
   flex: 0 1 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 </style>
