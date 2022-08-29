@@ -1,8 +1,13 @@
 <template>
   <div :class="$style.movie">
-    <!--    <AppMovieInformation :movieInformation="movieInformation" />-->
+    <div :class="$style['movie-information-wrapper']">
+      <AppMovieInformation
+        :class="$style['movie-information']"
+        :movieInformation="movieInformation"
+        :staff="staff"
+      />
+    </div>
     <AppSimilarMovies :similarMovies="similarMovies" />
-    <!--    <AppStaff :staff="staff" />-->
     <!--    <AppTrailer :trailer="trailer" />-->
   </div>
 </template>
@@ -16,7 +21,7 @@ import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 
 export default {
   name: "AppMovie",
-  components: { AppSimilarMovies },
+  components: { AppMovieInformation, AppSimilarMovies },
   // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformation
   data() {
     return {
@@ -24,9 +29,9 @@ export default {
     };
   },
   created() {
-    // this.getMovieInformation(this.id);
+    this.getMovieInformation(this.id);
     this.getSimilarMovies(this.id);
-    // this.getStaffInformation(this.id);
+    this.getStaffInformation(this.id);
     // this.getTrailer(this.id);
   },
   computed: {
@@ -54,5 +59,18 @@ export default {
 <style lang="scss" module>
 .movie {
   padding: 1rem 0;
+}
+
+.movie-information-wrapper {
+  display: flex;
+  gap: 3rem;
+}
+
+.movie-information {
+  flex: 1 0 60%;
+}
+
+.movie-staff {
+  flex: 0 1 40%;
 }
 </style>

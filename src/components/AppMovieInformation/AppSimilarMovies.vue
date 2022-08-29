@@ -51,6 +51,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
+.similar-movies-wrapper {
+  padding: 3rem 0;
+}
+
 .similar-movies-title {
   font-weight: 600;
   font-size: 1.5rem;
@@ -59,7 +63,7 @@ export default defineComponent({
 .similar-movies {
   display: flex;
   gap: 1rem;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
 }
 
 .similar-movie {

@@ -35,52 +35,58 @@
           {{ movieInformation.shortDescription }}
         </p>
       </div>
-      <ul :class="$style['movie-body']">
-        <h4 :class="$style['movie-about']">О фильме</h4>
-        <li class="year-wrapper">
-          <span class="production-year">Год производства</span>
-          <span class="year">{{ movieInformation.year }}</span>
-        </li>
-        <li class="movie-country-wrapper">
-          <span class="country">Страна</span
-          ><span
-            v-for="country in movieInformation.countries"
-            :key="country.country"
-            :class="$style['movie-country']"
-            >{{ country.country }}</span
-          >
-        </li>
-        <ul class="movie-genres">
-          <ul class="genre-item">
-            <span :class="$style['genre-title']">Жанр</span>
-            <li
-              v-for="genre in movieInformation.genres"
-              :key="genre"
-              :class="$style.genre"
-            >
-              <span>{{ genre.genre }}</span>
+      <div :class="$style['movie-main-wrapper']">
+        <div :class="$style['movie-body']">
+          <ul :class="$style['movie-about-information']">
+            <h4 :class="$style['movie-about-title']">О фильме</h4>
+            <li class="year-wrapper">
+              <span class="production-year">Год производства</span>
+              <span class="year">{{ movieInformation.year }}</span>
+            </li>
+            <li class="movie-country-wrapper">
+              <span class="country">Страна</span
+              ><span
+                v-for="country in movieInformation.countries"
+                :key="country.country"
+                :class="$style['movie-country']"
+                >{{ country.country }}</span
+              >
+            </li>
+            <ul class="movie-genres">
+              <ul class="genre-item">
+                <span :class="$style['genre-title']">Жанр</span>
+                <li
+                  v-for="genre in movieInformation.genres"
+                  :key="genre"
+                  :class="$style.genre"
+                >
+                  <span>{{ genre.genre }}</span>
+                </li>
+              </ul>
+            </ul>
+            <li v-if="movieInformation.slogan" class="slogan-wrapper">
+              <span class="slogan-title">Слоган</span>
+              <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
+            </li>
+            <li class="years-limit-wrapper">
+              <span class="year-limit-title">Возраст: </span>
+              <span class="rating-age-limits">{{ convertedRatingAge }}</span>
+            </li>
+            <li class="time-wrapper">
+              <span class="time-title">Время</span>
+              <span class="time"
+                >{{ movieInformation.filmLength }} мин. /
+                {{ convertedTime }}</span
+              >
             </li>
           </ul>
-        </ul>
-        <li v-if="movieInformation.slogan" class="slogan-wrapper">
-          <span class="slogan-title">Слоган</span>
-          <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
-        </li>
-        <li class="years-limit-wrapper">
-          <span class="year-limit-title">Возраст: </span>
-          <span class="rating-age-limits">{{ convertedRatingAge }}</span>
-        </li>
-        <li class="time-wrapper">
-          <span class="time-title">Время</span>
-          <span class="time"
-            >{{ movieInformation.filmLength }} мин. / {{ convertedTime }}</span
-          >
-        </li>
-      </ul>
-      <div :class="$style['movie-footer']">
-        <span :class="$style['movie-description']">{{
-          movieInformation.description
-        }}</span>
+          <div :class="$style['movie-footer']">
+            <span :class="$style['movie-description']">{{
+              movieInformation.description
+            }}</span>
+          </div>
+        </div>
+        <AppStaff :class="$style['movie-staff']" :staff="staff" />
       </div>
     </div>
   </div>
@@ -88,11 +94,19 @@
 
 <script>
 import { defineComponent } from "vue";
+import AppStaff from "@/components/AppMovieInformation/AppStaff";
 
 export default defineComponent({
   name: "AppMovieInformation",
+  components: {
+    AppStaff,
+  },
   props: {
     movieInformation: {
+      type: Object,
+      required: true,
+    },
+    staff: {
       type: Object,
       required: true,
     },
@@ -140,15 +154,18 @@ export default defineComponent({
 }
 
 .movie-body {
-  padding-top: 3rem;
   font-size: 0.75rem;
   line-height: 130%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  flex: 1 0 60%;
 }
 
-.movie-body > li > :first-child {
+.movie-about-information {
+  display: flex;
+  gap: 0.8rem;
+  flex-direction: column;
+}
+
+.movie-about-information > li > :first-child {
   color: $grey;
   min-width: 11.5rem;
   display: inline-block;
@@ -174,6 +191,7 @@ export default defineComponent({
 
 .movie-footer {
   padding-top: 3rem;
+  font-size: 0.85rem;
 }
 
 .movie-description {
@@ -214,7 +232,7 @@ export default defineComponent({
   gap: 0.3rem;
 }
 
-.movie-about {
+.movie-about-title {
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -224,5 +242,12 @@ export default defineComponent({
   padding: 0.07rem 0.1rem;
   font-size: 0.5rem;
   margin-left: 0.3rem;
+}
+
+.movie-main-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-top: 3rem;
 }
 </style>

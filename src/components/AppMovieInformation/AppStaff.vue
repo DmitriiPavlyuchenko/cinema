@@ -1,7 +1,8 @@
 <template>
-  <div class="actors-wrapper">
-    <ul class="actor-list">
-      <li v-for="actor in tenStaff" :key="actor.staffId" class="actor">
+  <div :class="$style['actors-wrapper']">
+    <h4 :class="$style['actor-title']">В главных ролях</h4>
+    <ul :class="$style['actor-list']">
+      <li v-for="actor in tenStaff" :key="actor.staffId" :class="$style.actor">
         {{ actor.nameRu }}
       </li>
     </ul>
@@ -29,4 +30,25 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" module>
+.actor-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.actors-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.actor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.actor {
+  font-size: 0.7rem;
+}
+</style>
