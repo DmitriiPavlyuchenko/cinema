@@ -10,9 +10,11 @@
           v-if="movieInformation.nameOriginal"
           :class="$style['movie-title-en']"
           >{{ movieInformation.nameOriginal }}
-          <span :class="$style['rating-age-limits']">{{
-            convertedRatingAge
-          }}</span>
+          <span
+            v-if="movieInformation.ratingAgeLimits"
+            :class="$style['rating-age-limits']"
+            >{{ convertedRatingAge }}</span
+          >
         </span>
         <div :class="$style['movie-preview-wrapper']">
           <div :class="$style['movie-poster-wrapper']">
@@ -46,7 +48,7 @@
               <span class="production-year">Год производства</span>
               <span class="year">{{ movieInformation.year }}</span>
             </li>
-            <li class="movie-country-wrapper">
+            <li :class="$style['movie-country-wrapper']">
               <span class="country">Страна</span
               ><span
                 v-for="country in movieInformation.countries"
@@ -209,6 +211,10 @@ export default defineComponent({
 }
 
 .movie-poster-wrapper {
+}
+
+.movie-country-wrapper {
+  display: flex;
 }
 
 .movie-poster {
