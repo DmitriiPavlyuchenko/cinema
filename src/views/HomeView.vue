@@ -1,7 +1,7 @@
 <template>
   <AppPremiers />
-  <AppTopAwaitMovies />
   <AppTopMovies />
+  <AppTopAwaitMovies />
 </template>
 
 <script lang="ts">

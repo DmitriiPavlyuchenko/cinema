@@ -41,5 +41,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  padding: 1rem 0;
 }
 </style>

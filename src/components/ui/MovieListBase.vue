@@ -80,10 +80,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-.movie-list:first-child {
-  padding-top: 1rem;
-}
-
 .premiers-wrapper {
 }
 
