@@ -7,9 +7,9 @@
         :staff="staff"
       />
     </div>
-    <AppSimilarMovies :similarMovies="similarMovies" />
     <!--    <AppTrailer :trailer="trailer" />-->
   </div>
+  <AppSimilarMovies :similarMovies="similarMovies" />
 </template>
 
 <script>

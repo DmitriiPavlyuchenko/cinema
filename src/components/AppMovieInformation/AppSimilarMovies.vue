@@ -53,6 +53,7 @@ export default defineComponent({
 <style lang="scss" module>
 .similar-movies-wrapper {
   padding: 3rem 0;
+  width: 100vh;
 }
 
 .similar-movies-title {

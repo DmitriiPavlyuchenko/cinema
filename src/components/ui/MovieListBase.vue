@@ -129,7 +129,7 @@ export default defineComponent({
   right: 0;
   left: 0;
   bottom: 0;
-  opacity: 0.5;
+  opacity: 0.65;
   z-index: -1;
   background-color: $black;
   width: 100%;
