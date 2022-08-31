@@ -72,7 +72,7 @@ export default defineComponent({
   name: "MovieListBase",
   props: {
     movies: {
-      type: Object,
+      type: [Object, null],
       required: true,
     },
   },
@@ -116,6 +116,10 @@ export default defineComponent({
   padding: 1rem;
   gap: 2.5rem;
   background-color: #727272;
+}
+
+.card:hover {
+  box-shadow: 0 0 0.75rem silver;
 }
 
 .card:before {

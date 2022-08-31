@@ -1,16 +1,15 @@
 <template>
-  <MovieListBase :movies="topMovies.films">
+  <MovieListBase v-if="topMovies.films" :movies="topMovies.films">
     <template #list-title>Лучшие 250 фильмов</template>
   </MovieListBase>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import MovieListBase from "@/components/ui/MovieListBase";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "AppTopMovies",
-  components: { MovieListBase },
   created() {
     this.getTopMovies();
   },
@@ -20,7 +19,7 @@ export default {
   methods: {
     ...mapActions("cinema", ["getTopMovies"]),
   },
-};
+});
 </script>
 
-<style scoped></style>
+<style lang="scss" module></style>

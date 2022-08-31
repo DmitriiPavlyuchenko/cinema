@@ -2,7 +2,7 @@
   <div :class="$style['actors-wrapper']">
     <h4 :class="$style['actor-title']">В главных ролях</h4>
     <ul :class="$style['actor-list']">
-      <li v-for="actor in tenStaff" :key="actor.staffId" :class="$style.actor">
+      <li v-for="(actor, index) in tenStaff" :key="index" :class="$style.actor">
         {{ actor.nameRu }}
       </li>
     </ul>
