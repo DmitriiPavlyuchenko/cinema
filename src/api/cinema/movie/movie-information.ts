@@ -21,3 +21,9 @@ export const getTrailer = (id: number): Promise<AxiosResponse> => {
 export const getTopMovies = (pageNumber: number): Promise<AxiosResponse> => {
   return instance.get(API.TOP_250_FILMS + `${pageNumber}`);
 };
+
+export const getTopAwaitMovies = (
+  pageNumber: number
+): Promise<AxiosResponse> => {
+  return instance.get(API.TOP_AWAIT_FILMS + `${pageNumber}`);
+};

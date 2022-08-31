@@ -1,8 +1,9 @@
 export interface Cinema {
   premieres: null | object[];
-  movieInformation: null | object[];
-  staff: null | object[];
-  similarMovies: null | object[];
+  movieInformation: object;
+  staff: object[];
+  similarMovies: object;
   trailer: null | object[];
-  topMovies: null | object[];
+  topMovies: object[];
+  topAwaitMovies: object[];
 }

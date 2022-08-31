@@ -22,7 +22,10 @@
               :src="movieInformation.posterUrlPreview"
             />
           </div>
-          <div :class="$style['rating-wrapper']">
+          <div
+            v-if="movieInformation.ratingKinopoisk"
+            :class="$style['rating-wrapper']"
+          >
             <span :class="$style.rating">{{
               movieInformation.ratingKinopoisk
             }}</span>
@@ -68,7 +71,10 @@
               <span class="slogan-title">Слоган</span>
               <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
             </li>
-            <li class="years-limit-wrapper">
+            <li
+              v-if="movieInformation.ratingAgeLimits"
+              class="years-limit-wrapper"
+            >
               <span class="year-limit-title">Возраст: </span>
               <span class="rating-age-limits">{{ convertedRatingAge }}</span>
             </li>
@@ -123,8 +129,7 @@ export default defineComponent({
     },
     convertedRatingAge() {
       const regExp = /\d+/;
-      const movieInformation = this.movieInformation;
-      const ratingAge = movieInformation.ratingAgeLimits.match(regExp);
+      const ratingAge = this.movieInformation?.ratingAgeLimits?.match(regExp);
       return ratingAge + " +";
     },
   },

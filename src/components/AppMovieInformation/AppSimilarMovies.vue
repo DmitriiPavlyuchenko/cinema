@@ -44,7 +44,7 @@ export default defineComponent({
   },
   computed: {
     hasSimilarMovies() {
-      return this.similarMovies.items.length === 0;
+      return this.similarMovies.items?.length === 0;
     },
   },
 });

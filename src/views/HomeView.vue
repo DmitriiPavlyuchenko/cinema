@@ -1,5 +1,6 @@
 <template>
   <AppPremiers />
+  <AppTopAwaitMovies />
   <AppTopMovies />
 </template>
 
@@ -8,10 +9,11 @@ import { defineComponent } from "vue";
 import AppPremiers from "@/components/AppPremiers.vue";
 import { mapGetters } from "vuex";
 import AppTopMovies from "@/components/AppTopMovies.vue";
+import AppTopAwaitMovies from "@/components/AppTopAwaitMovies.vue";
 
 export default defineComponent({
   name: "HomeView",
-  components: { AppTopMovies, AppPremiers },
+  components: { AppTopAwaitMovies, AppTopMovies, AppPremiers },
   getters: {
     ...mapGetters("signIn", ["isAuth"]),
   },

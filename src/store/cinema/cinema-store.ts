@@ -8,19 +8,22 @@ import {
   getMovie,
   getSimilarMovies,
   getStaff,
+  getTopAwaitMovies,
   getTopMovies,
   getTrailer,
 } from "@/api/cinema/movie/movie-information";
+import { generateRandomNumber } from "@/helpers/generate-random-number";
 
 export const cinemaStore: Module<Cinema, RootStore> = {
   namespaced: true,
   state: () => ({
     premieres: null,
-    movieInformation: null,
-    staff: null,
-    similarMovies: null,
+    movieInformation: {},
+    staff: [],
+    similarMovies: {},
     trailer: null,
-    topMovies: null,
+    topMovies: [],
+    topAwaitMovies: [],
   }),
   getters: {
     premiers(state) {
@@ -41,6 +44,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     topMovies(state) {
       return state.topMovies;
     },
+    topAwaitMovies(state) {
+      return state.topAwaitMovies;
+    },
   },
   mutations: {
     SET_PREMIERS(state, payload) {
@@ -60,6 +66,9 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
     SET_TOP_MOVIES(state, payload) {
       state.topMovies = payload;
+    },
+    SET_TOP_AWAIT_MOVIES(state, payload) {
+      state.topAwaitMovies = payload;
     },
   },
   actions: {
@@ -120,12 +129,23 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
     async getTopMovies(context) {
       try {
-        const minPage = 1;
-        const maxPage = 13;
-        const page = Math.round(Math.random() * (maxPage - minPage) + minPage);
+        const firstPage = 1;
+        const lastPage = 13;
+        const page = generateRandomNumber(firstPage, lastPage);
         const response = await getTopMovies(page);
         if (response.status === SERVER_RESPONSE.CODE_200) {
           context.commit("SET_TOP_MOVIES", response.data);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async getTopAwaitMovies(context) {
+      try {
+        const page = 1;
+        const response = await getTopAwaitMovies(page);
+        if (response.status === SERVER_RESPONSE.CODE_200) {
+          context.commit("SET_TOP_AWAIT_MOVIES", response.data);
         }
       } catch (e) {
         console.log(e);
