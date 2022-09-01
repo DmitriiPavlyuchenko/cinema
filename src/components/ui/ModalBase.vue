@@ -10,7 +10,7 @@
             <slot name="body"></slot>
           </div>
           <div :class="$style['modal-footer']">
-            <slot name="footer"> </slot>
+            <slot name="footer"></slot>
           </div>
           <ButtonBase :class="$style['modal-close']" @click="close"
             >x
@@ -93,6 +93,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: $black;
 }
 
 .modal-footer {

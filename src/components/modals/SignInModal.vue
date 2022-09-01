@@ -1,7 +1,7 @@
 <template>
   <ModalBase :isModalOpen="isModalOpen" @closeModal="close">
     <template #header>
-      <span :class="$style['modal-title']">Авторизация</span>
+      <span>Авторизация</span>
     </template>
     <template #body>
       <form :class="$style['sign_in-form']" name="sign-in" @submit.prevent>
@@ -122,9 +122,6 @@ export default defineComponent({
 
 <style lang="scss" module>
 .modal-title {
-  font-size: 1.5rem;
-  text-align: center;
-  color: $black;
 }
 
 .sign_in-form {

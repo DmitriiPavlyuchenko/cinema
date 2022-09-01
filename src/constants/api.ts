@@ -7,4 +7,5 @@ export const API = {
   STAFF_INFORMATION: "/api/v1/staff",
   TOP_250_FILMS: "/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=",
   TOP_AWAIT_FILMS: "/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=",
+  FILTERS: "/api/v2.2/films/filters",
 };

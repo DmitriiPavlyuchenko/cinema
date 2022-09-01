@@ -5,7 +5,11 @@
     </ButtonBase>
     <ul v-if="openedMenu" :class="$style['menu-list']">
       <li :class="$style['menu-item']">
-        <ButtonBase :class="$style['menu-link']" type="button">
+        <ButtonBase
+          :class="$style['menu-link']"
+          type="button"
+          @click="isFiltersOpen = true"
+        >
           <IconBase height="18" icon-name="filter" width="18">
             <IconFilter />
           </IconBase>
@@ -29,6 +33,13 @@
         </router-link>
       </li>
     </ul>
+    <teleport to="body">
+      <FiltersModal
+        :isFiltersOpen="isFiltersOpen"
+        @closeModal="isFiltersOpen = false"
+      >
+      </FiltersModal>
+    </teleport>
   </aside>
 </template>
 
@@ -38,10 +49,12 @@ import { mapActions, mapState } from "vuex";
 import IconSettings from "@/components/icons/IconSettings.vue";
 import IconExit from "@/components/icons/IconExit.vue";
 import IconFilter from "@/components/icons/IconFilter.vue";
+import FiltersModal from "@/components/modals/FiltersModal.vue";
 
 export default defineComponent({
   name: "AppAsideMenu",
   components: {
+    FiltersModal,
     IconFilter,
     IconSettings,
     IconExit,
@@ -49,6 +62,7 @@ export default defineComponent({
   data() {
     return {
       isMenuOpen: false,
+      isFiltersOpen: false,
     };
   },
   computed: {
