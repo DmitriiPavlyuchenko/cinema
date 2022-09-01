@@ -83,9 +83,6 @@ export default defineComponent({
 .premiers-wrapper {
 }
 
-.list-title {
-}
-
 .list {
   display: flex;
   gap: 1rem;
@@ -125,7 +122,7 @@ export default defineComponent({
   right: 0;
   left: 0;
   bottom: 0;
-  opacity: 0.65;
+  opacity: 0.75;
   z-index: -1;
   background-color: $black;
   width: 100%;
@@ -133,7 +130,8 @@ export default defineComponent({
 }
 
 .movie-poster {
-  max-width: 10rem;
+  min-width: 8rem;
+  max-width: 100%;
   height: 12rem;
 }
 
