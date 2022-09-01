@@ -153,7 +153,7 @@ export default defineComponent({
 .movie-name {
   font-size: 1.4rem;
   font-weight: 600;
-  line-height: 80%;
+  line-height: 120%;
 }
 
 .genres {

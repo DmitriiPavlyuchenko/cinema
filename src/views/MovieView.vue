@@ -1,10 +1,10 @@
 <template>
-  <div class="test">Movies</div>
+  <div class="movie">HELLO</div>
 </template>
 
 <script>
 export default {
-  name: "AppMovies",
+  name: "MovieView",
 };
 </script>
 
