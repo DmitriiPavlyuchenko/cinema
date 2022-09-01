@@ -10,7 +10,11 @@ export const filtersStore: Module<Filters, RootStore> = {
   state: () => ({
     filters: {},
   }),
-  getters: {},
+  getters: {
+    filters(state) {
+      return state.filters;
+    },
+  },
   mutations: {
     SET_FILTERS(state, payload) {
       state.filters = payload;
