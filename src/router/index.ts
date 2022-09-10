@@ -8,7 +8,7 @@ import MovieView from "@/views/MovieView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home-view",
+    name: "home",
     component: HomeView,
     meta: { keepAlive: true },
   },

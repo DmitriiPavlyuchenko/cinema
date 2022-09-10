@@ -1,15 +1,15 @@
 <template>
-  <div class="container">
-    <AppHeader />
-    <main :class="$style.main">
-      <AppAsideMenu />
+  <AppHeader />
+  <main :class="$style.main">
+    <div class="container">
+      <!--      <AppAsideMenu />-->
       <div v-if="!isAuth" :class="$style['main-view']">
         <router-view v-slot="{ Component }">
           <Component :is="Component"></Component>
         </router-view>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
 </template>
 
 <script lang="ts">
@@ -21,7 +21,7 @@ import AppAsideMenu from "@/components/AppAsideMenu.vue";
 
 export default defineComponent({
   name: "App",
-  components: { AppHeader, AppAsideMenu },
+  components: { AppHeader },
   mounted() {
     this.isUserLoggedIn();
   },
