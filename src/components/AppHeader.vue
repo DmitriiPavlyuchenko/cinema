@@ -102,7 +102,7 @@ export default {
     justify-content: space-between;
     height: 1.1rem;
     opacity: 0.5;
-    z-index: 10;
+    z-index: 160;
   }
 
   .burger-open > span {
@@ -127,7 +127,7 @@ export default {
 
   .logo-link {
     display: inline-block;
-    z-index: 10;
+    z-index: 160;
   }
 
   .logo-img {
@@ -154,6 +154,7 @@ export default {
     padding: 4.2rem 1.2rem 1.5rem;
     border-radius: 0 0 0.5rem 0.5rem;
     background-color: $dark-hover;
+    z-index: 150;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.12), 0 1rem 1rem rgba(0, 0, 0, 0.16),
       0 2rem 1.5rem rgba(0, 0, 0, 0.24);
     transition: opacity 0.3s, visibility 0.3s;

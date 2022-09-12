@@ -1,6 +1,6 @@
 <template>
   <!--  <AppPremiers />-->
-  <!--  <AppTopMovies />-->
+  <AppTopMovies />
   <!--  <AppTopAwaitMovies />-->
 </template>
 
@@ -13,7 +13,8 @@ import AppTopAwaitMovies from "@/components/AppTopAwaitMovies.vue";
 
 export default defineComponent({
   name: "HomeView",
-  // components: { AppTopAwaitMovies, AppTopMovies, AppPremiers },
+  //AppTopAwaitMovies,AppTopMovies,AppPremiers
+  components: { AppTopMovies },
   getters: {
     ...mapGetters("signIn", ["isAuth"]),
   },
