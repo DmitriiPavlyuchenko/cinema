@@ -19,18 +19,54 @@
         <nav v-show="isMenuOpen" :class="$style.menu">
           <ul :class="$style['menu-list']">
             <li class="menu-item">
-              <router-link :class="$style['menu-link']" :to="{ name: 'home' }"
+              <router-link :class="$style['menu-link']" :to="{ name: 'home' }">
+                <IconBase height="18" icon-name="home" width="18">
+                  <IconHome /> </IconBase
                 >Главная
               </router-link>
             </li>
             <li class="menu-item">
-              <router-link :class="$style['menu-link']" :to="{ name: 'movies' }"
-                >Кино
+              <router-link
+                :class="$style['menu-link']"
+                :to="{ name: 'movies' }"
+              >
+                <IconBase height="18" icon-name="movie" width="18">
+                  <IconMovie />
+                </IconBase>
+                Кино
               </router-link>
             </li>
             <li class="menu-item">
-              <router-link :class="$style['menu-link']" :to="{ name: 'series' }"
-                >Сериалы
+              <router-link
+                :class="$style['menu-link']"
+                :to="{ name: 'series' }"
+              >
+                <IconBase height="18" icon-name="movie" width="18">
+                  <IconSeries />
+                </IconBase>
+                Сериалы
+              </router-link>
+            </li>
+            <li class="menu-item">
+              <router-link
+                :class="$style['menu-link']"
+                :to="{ name: 'series' }"
+              >
+                <IconBase height="18" icon-name="movie" width="18">
+                  <IconCartoons />
+                </IconBase>
+                Мультики
+              </router-link>
+            </li>
+            <li class="menu-item">
+              <router-link
+                :class="$style['menu-link']"
+                :to="{ name: 'series' }"
+              >
+                <IconBase height="18" icon-name="movie" width="18">
+                  <IconFavorites />
+                </IconBase>
+                Избранное
               </router-link>
             </li>
           </ul>
@@ -61,10 +97,24 @@
 <script>
 import { mapState } from "vuex";
 import SignInModal from "@/components/modals/SignInModal";
+import IconHome from "@/components/icons/IconHome";
+import IconMovie from "@/components/icons/IconMovie";
+import IconBase from "@/components/ui/IconBase";
+import IconSeries from "@/components/icons/IconSeries";
+import IconCartoons from "@/components/icons/IconCartoons";
+import IconFavorites from "@/components/icons/IconFavorites";
 
 export default {
   name: "AppHeader",
-  components: { SignInModal },
+  components: {
+    IconFavorites,
+    IconCartoons,
+    IconSeries,
+    IconBase,
+    IconMovie,
+    IconHome,
+    SignInModal,
+  },
 
   data() {
     return {
@@ -172,11 +222,18 @@ export default {
     color: $text-color;
     opacity: 0.5;
     transition: opacity 0.5s;
+    display: flex;
+    align-items: first baseline;
+    gap: 0.6rem;
   }
 
   .menu-link:hover {
-    color: $text-color;
     opacity: 1;
+  }
+
+  .selected {
+    opacity: 1;
+    text-underline: $purple;
   }
 
   .login {

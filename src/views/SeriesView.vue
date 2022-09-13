@@ -1,10 +1,10 @@
 <template>
-  <div class="serials">Serials</div>
+  <div class="series">Series</div>
 </template>
 
 <script>
 export default {
-  name: "AppSerials",
+  name: "SeriesView",
 };
 </script>
 
