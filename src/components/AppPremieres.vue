@@ -1,5 +1,5 @@
 <template>
-  <MovieListBase :movies="premiers">
+  <MovieListBase :movies="premieres">
     <template #list-title>Премьеры</template>
   </MovieListBase>
 </template>
@@ -9,15 +9,15 @@ import { defineComponent } from "vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default defineComponent({
-  name: "AppPremiers",
+  name: "AppPremieres",
   created() {
-    this.getPremiers();
+    this.getPremieres();
   },
   computed: {
-    ...mapGetters("cinema", ["premiers"]),
+    ...mapGetters("cinema", ["premieres"]),
   },
   methods: {
-    ...mapActions("cinema", ["getPremiers"]),
+    ...mapActions("cinema", ["getPremieres"]),
   },
 });
 </script>

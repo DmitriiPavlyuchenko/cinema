@@ -9,7 +9,7 @@
     </div>
     <!--    <AppTrailer :trailer="trailer" />-->
   </div>
-  <AppSimilarMovies :similarMovies="similarMovies" />
+  <!--  <AppSimilarMovies :similarMovies="similarMovies" />-->
 </template>
 
 <script>
@@ -21,8 +21,8 @@ import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 
 export default {
   name: "AppMovie",
-  components: { AppMovieInformation, AppSimilarMovies },
-  // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformation
+  components: { AppMovieInformation },
+  // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformationAppSimilarMovies
   data() {
     return {
       id: this.$route.params.id,
@@ -58,7 +58,7 @@ export default {
 
 <style lang="scss" module>
 .movie {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
 
 .movie-information-wrapper {

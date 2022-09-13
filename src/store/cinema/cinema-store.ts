@@ -26,7 +26,7 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     topAwaitMovies: [],
   }),
   getters: {
-    premiers(state) {
+    premieres(state) {
       return state.premieres;
     },
     movieInformation(state) {
@@ -49,7 +49,7 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
   },
   mutations: {
-    SET_PREMIERS(state, payload) {
+    SET_PREMIERES(state, payload) {
       state.premieres = payload;
     },
     SET_MOVIE(state, payload) {
@@ -72,7 +72,7 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
   },
   actions: {
-    async getPremiers(context) {
+    async getPremieres(context) {
       try {
         const date = new Date();
         const year = date.getFullYear();
@@ -80,8 +80,8 @@ export const cinemaStore: Module<Cinema, RootStore> = {
         const data = { year: year, month: month };
         const response = await getPremiers(data);
         if (response.status === SERVER_RESPONSE.CODE_200) {
-          const tenPremiers = response.data.items.slice(0, 10);
-          context.commit("SET_PREMIERS", tenPremiers);
+          const tenPremieres = response.data.items.slice(0, 10);
+          context.commit("SET_PREMIERES", tenPremieres);
         }
       } catch (e) {
         console.log(e);

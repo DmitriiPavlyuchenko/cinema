@@ -1,19 +1,6 @@
 <template>
   <div class="movie">
     <div :class="$style['movie-header']">
-      <h3 :class="$style['movie-title']">
-        {{ movieInformation.nameRu }} ({{ movieInformation.year }})
-      </h3>
-      <span
-        v-if="movieInformation.nameOriginal"
-        :class="$style['movie-title-en']"
-        >{{ movieInformation.nameOriginal }}
-        <span
-          v-if="movieInformation.ratingAgeLimits"
-          :class="$style['rating-age-limits']"
-          >{{ convertedRatingAge }}</span
-        >
-      </span>
       <div :class="$style['movie-preview-wrapper']">
         <div :class="$style['movie-poster-wrapper']">
           <img
@@ -21,77 +8,81 @@
             :class="$style['movie-poster']"
             :src="movieInformation.posterUrlPreview"
           />
-        </div>
-        <div
-          v-if="movieInformation.ratingKinopoisk"
-          :class="$style['rating-wrapper']"
-        >
-          <span :class="$style.rating">{{
-            movieInformation.ratingKinopoisk
-          }}</span>
-          <span :class="$style['vote-count']"
-            >{{ movieInformation.ratingKinopoiskVoteCount }} оценок</span
+          <div
+            v-if="movieInformation.ratingKinopoisk"
+            :class="$style['rating-wrapper']"
           >
+            <span :class="$style.rating">{{
+              movieInformation.ratingKinopoisk
+            }}</span>
+          </div>
         </div>
       </div>
-      <p :class="$style['movie-short-description']">
-        {{ movieInformation.shortDescription }}
-      </p>
+      <ul :class="$style['movie-about-information']">
+        <h3 :class="$style['movie-title']">
+          {{ movieInformation.nameRu }} ({{ movieInformation.year }})
+        </h3>
+        <span
+          v-if="movieInformation.nameOriginal"
+          :class="$style['movie-title-en']"
+          >{{ movieInformation.nameOriginal }}
+          <span
+            v-if="movieInformation.ratingAgeLimits"
+            :class="$style['rating-age-limits']"
+            >{{ convertedRatingAge }}</span
+          >
+        </span>
+        <h4 :class="$style['movie-about-title']">О фильме</h4>
+        <li class="year-wrapper">
+          <span class="production-year">Год производства</span>
+          <span class="year">{{ movieInformation.year }}</span>
+        </li>
+        <li :class="$style['movie-country-wrapper']">
+          <span class="country">Страна</span
+          ><span
+            v-for="country in movieInformation.countries"
+            :key="country.country"
+            :class="$style['movie-country']"
+            >{{ country.country }}</span
+          >
+        </li>
+        <ul class="movie-genres">
+          <ul :class="$style['genre-item']">
+            <span :class="$style['genre-title']">Жанр</span>
+            <li
+              v-for="genre in movieInformation.genres"
+              :key="genre"
+              :class="$style.genre"
+            >
+              <span>{{ genre.genre }}</span>
+            </li>
+          </ul>
+        </ul>
+        <li v-if="movieInformation.slogan" class="slogan-wrapper">
+          <span class="slogan-title">Слоган</span>
+          <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
+        </li>
+        <li v-if="movieInformation.ratingAgeLimits" class="years-limit-wrapper">
+          <span class="year-limit-title">Возраст: </span>
+          <span class="rating-age-limits">{{ convertedRatingAge }}</span>
+        </li>
+        <li class="time-wrapper">
+          <span class="time-title">Время</span>
+          <span class="time"
+            >{{ movieInformation.filmLength }} мин. / {{ convertedTime }}</span
+          >
+        </li>
+      </ul>
     </div>
     <div :class="$style['movie-main-wrapper']">
       <div :class="$style['movie-body']">
-        <ul :class="$style['movie-about-information']">
-          <h4 :class="$style['movie-about-title']">О фильме</h4>
-          <li class="year-wrapper">
-            <span class="production-year">Год производства</span>
-            <span class="year">{{ movieInformation.year }}</span>
-          </li>
-          <li :class="$style['movie-country-wrapper']">
-            <span class="country">Страна</span
-            ><span
-              v-for="country in movieInformation.countries"
-              :key="country.country"
-              :class="$style['movie-country']"
-              >{{ country.country }}</span
-            >
-          </li>
-          <ul class="movie-genres">
-            <ul :class="$style['genre-item']">
-              <span :class="$style['genre-title']">Жанр</span>
-              <li
-                v-for="genre in movieInformation.genres"
-                :key="genre"
-                :class="$style.genre"
-              >
-                <span>{{ genre.genre }}</span>
-              </li>
-            </ul>
-          </ul>
-          <li v-if="movieInformation.slogan" class="slogan-wrapper">
-            <span class="slogan-title">Слоган</span>
-            <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
-          </li>
-          <li
-            v-if="movieInformation.ratingAgeLimits"
-            class="years-limit-wrapper"
-          >
-            <span class="year-limit-title">Возраст: </span>
-            <span class="rating-age-limits">{{ convertedRatingAge }}</span>
-          </li>
-          <li class="time-wrapper">
-            <span class="time-title">Время</span>
-            <span class="time"
-              >{{ movieInformation.filmLength }} мин. /
-              {{ convertedTime }}</span
-            >
-          </li>
-        </ul>
-        <div :class="$style['movie-footer']">
-          <span :class="$style['movie-description']">{{
-            movieInformation.description
-          }}</span>
-        </div>
+        <h4 :class="$style['movie-body-title']">Описание</h4>
+        <p :class="$style['movie-description']">
+          {{ movieInformation.description }}
+        </p>
       </div>
+    </div>
+    <div :class="$style['movie-footer']">
       <AppStaff :class="$style['movie-staff']" :staff="staff" />
     </div>
   </div>
@@ -138,8 +129,7 @@ export default defineComponent({
 <style lang="scss" module>
 .movie-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  gap: 5rem;
 }
 
 .movie-title {
@@ -160,8 +150,10 @@ export default defineComponent({
 
 .movie-body {
   font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   line-height: 130%;
-  flex: 0 0 60%;
 }
 
 .movie-about-information {
@@ -194,6 +186,10 @@ export default defineComponent({
   display: inline-block;
 }
 
+.movie-body-title {
+  font-size: 1.2rem;
+}
+
 .movie-footer {
   padding-top: 3rem;
   font-size: 0.85rem;
@@ -209,6 +205,9 @@ export default defineComponent({
 }
 
 .movie-poster-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
 }
 
 .movie-country-wrapper {
@@ -226,21 +225,18 @@ export default defineComponent({
 }
 
 .rating {
-  background: $gold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 1.5rem;
+  background: $success;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
   font-weight: 600;
-}
-
-.vote-count {
-  color: $grey;
-  font-size: 0.65rem;
-  line-height: 0.9rem;
 }
 
 .rating-wrapper {
   display: flex;
+  left: 0.5rem;
+  top: 0.5rem;
+  position: absolute;
   flex-direction: column;
   gap: 0.3rem;
 }
@@ -259,8 +255,6 @@ export default defineComponent({
 
 .movie-main-wrapper {
   display: flex;
-  justify-content: space-between;
-  gap: 3rem;
   padding-top: 3rem;
 }
 </style>
