@@ -3,6 +3,7 @@
     <div :class="$style['movie-information-wrapper']">
       <AppMovieInformation
         :class="$style['movie-information']"
+        :movie-id="this.$route.params.id"
         :movieInformation="movieInformation"
         :staff="staff"
       />
