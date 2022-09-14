@@ -11,7 +11,7 @@ export default defineComponent({
   name: "InputBase",
   props: {
     modelValue: {
-      type: String,
+      type: [String, Number],
       required: true,
     },
   },
