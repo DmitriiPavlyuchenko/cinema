@@ -20,7 +20,7 @@ import AppBanner from "@/components/AppBanner.vue";
 
 export default defineComponent({
   name: "App",
-  components: { AppHeader, AppBanner },
+  components: { AppHeader },
   mounted() {
     this.isUserLoggedIn();
   },
@@ -33,6 +33,7 @@ export default defineComponent({
 <style lang="scss" module>
 .main {
   display: flex;
+  flex-direction: column;
 }
 
 .main-view {

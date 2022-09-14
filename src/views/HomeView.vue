@@ -1,5 +1,4 @@
 <template>
-  <AppBanner></AppBanner>
   <AppPremieres />
   <!--  <AppTopMovies />-->
   <!--  <AppTopAwaitMovies />-->
