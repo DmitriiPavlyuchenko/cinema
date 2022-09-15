@@ -33,11 +33,12 @@ import { getItem, setItem } from "@/helpers/persistanceStorage";
 import IconCheck from "@/components/icons/IconCheck";
 
 export default {
-  name: "AppFavorites",
+  name: "AppFavoriteButton",
   components: { IconCheck, IconFavorites },
   props: {
     movieId: {
-      required: false,
+      required: true,
+      type: [Number, String],
     },
   },
   data() {
@@ -52,7 +53,9 @@ export default {
     toggleFavoriteMovie() {
       const moviesId = getItem("favorites");
       const moviesIdArray = Array.from(moviesId);
-      const isMovieInLocalStorage = moviesIdArray.includes(this.movieId);
+      const isMovieInLocalStorage = moviesIdArray.includes(
+        Number(this.movieId)
+      );
       if (!isMovieInLocalStorage) {
         this.addToFavorites(moviesIdArray);
       } else {
@@ -60,12 +63,12 @@ export default {
       }
     },
     addToFavorites(moviesIdArray) {
-      setItem("favorites", [...moviesIdArray, this.movieId]);
+      setItem("favorites", [...moviesIdArray, Number(this.movieId)]);
       this.isMovieInFavorites = true;
     },
     removeFromFavorites(moviesIdArray) {
       const newMoviesIdList = moviesIdArray.filter(
-        (movieId) => movieId !== this.movieId
+        (movieId) => movieId !== Number(this.movieId)
       );
       setItem("favorites", [...newMoviesIdList]);
       this.isMovieInFavorites = false;
@@ -73,7 +76,7 @@ export default {
     isMovieInLocalStorage() {
       const moviesId = getItem("favorites");
       const moviesIdArray = Array.from(moviesId);
-      this.isMovieInFavorites = moviesIdArray.includes(this.movieId);
+      this.isMovieInFavorites = moviesIdArray.includes(Number(this.movieId));
     },
   },
 };

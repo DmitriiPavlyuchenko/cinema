@@ -92,6 +92,7 @@ export const cinemaStore: Module<Cinema, RootStore> = {
         const response = await getMovie(id);
         if (response.status === SERVER_RESPONSE.CODE_200) {
           context.commit("SET_MOVIE", response.data);
+          return response.data;
         }
       } catch (e) {
         console.log(e);

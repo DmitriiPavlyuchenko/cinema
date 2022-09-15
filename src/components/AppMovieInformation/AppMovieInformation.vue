@@ -33,7 +33,7 @@
           >
         </span>
         <div class="movie-buttons">
-          <AppFavorites :movie-id="movieId" />
+          <AppFavoritesButton :movie-id="movieId" />
         </div>
         <h4 :class="$style['movie-about-title']">О фильме</h4>
         <li class="year-wrapper">
@@ -94,13 +94,13 @@
 <script>
 import { defineComponent } from "vue";
 import AppStaff from "@/components/AppMovieInformation/AppStaff";
-import AppFavorites from "@/components/AppFavorites";
+import AppFavoritesButton from "@/components/AppFavorites/AppFavoriteButton";
 
 export default defineComponent({
   name: "AppMovieInformation",
   components: {
     AppStaff,
-    AppFavorites,
+    AppFavoritesButton,
   },
   props: {
     movieInformation: {

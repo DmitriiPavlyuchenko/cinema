@@ -61,10 +61,10 @@
             <li class="menu-item">
               <router-link
                 :class="$style['menu-link']"
-                :to="{ name: 'series' }"
+                :to="{ name: 'favorites' }"
               >
                 <IconBase height="18" icon-name="movie" width="18">
-                  <IconFavorites />
+                  <IconFavoritesMenu />
                 </IconBase>
                 Избранное
               </router-link>
@@ -102,12 +102,12 @@ import IconMovie from "@/components/icons/IconMovie";
 import IconBase from "@/components/ui/IconBase";
 import IconSeries from "@/components/icons/IconSeries";
 import IconCartoons from "@/components/icons/IconCartoons";
-import IconFavorites from "@/components/icons/IconFavorites";
+import IconFavoritesMenu from "@/components/icons/IconFavoritesMenu";
 
 export default {
   name: "AppHeader",
   components: {
-    IconFavorites,
+    IconFavoritesMenu,
     IconCartoons,
     IconSeries,
     IconBase,
