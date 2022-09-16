@@ -77,7 +77,7 @@ export default defineComponent({
 .card {
   display: flex;
   width: 100%;
-  height: auto;
+  height: 100%;
   flex-direction: column;
   gap: 0.8rem;
   position: relative;
