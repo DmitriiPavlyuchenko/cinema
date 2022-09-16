@@ -1,16 +1,27 @@
 <template>
   <header :class="$style.header">
-    <div
-      :class="$style['container-header']"
-      class="container"
-      @click="closeMenu"
-    >
-      <div :class="$style['menu-wrapper']">
-        <button :class="$style['burger-open']" @click="openMenu">
+    <div :class="$style['container-header']" class="container">
+      <div :class="$style['menu-wrapper']" class="menu-wrapper" @click="close">
+        <ButtonBase
+          v-if="!isMenuOpen"
+          :class="$style['burger-open']"
+          class="open-menu"
+          @click="isMenuOpen = true"
+        >
           <span></span>
           <span></span>
           <span></span>
-        </button>
+        </ButtonBase>
+        <ButtonBase
+          v-else
+          :class="$style['burger-close']"
+          class="close-menu"
+          @click="isMenuOpen = false"
+        >
+          <IconBase height="18" icon-name="close" width="18">
+            <IconClose />
+          </IconBase>
+        </ButtonBase>
         <router-link :class="$style['logo-link']" :to="{ name: 'home' }">
           <AppLogotype />
         </router-link>
@@ -19,8 +30,9 @@
             <li class="menu-item">
               <router-link :class="$style['menu-link']" :to="{ name: 'home' }">
                 <IconBase height="18" icon-name="home" width="18">
-                  <IconHome /> </IconBase
-                >Главная
+                  <IconHome />
+                </IconBase>
+                Главная
               </router-link>
             </li>
             <li class="menu-item">
@@ -101,10 +113,13 @@ import IconSeries from "@/components/icons/IconSeries";
 import IconCartoons from "@/components/icons/IconCartoons";
 import IconFavoritesMenu from "@/components/icons/IconFavoritesMenu";
 import AppLogotype from "@/components/AppLogotype";
+import ButtonBase from "@/components/ui/ButtonBase";
+import IconClose from "@/components/icons/IconClose";
 
 export default {
   name: "AppHeader",
   components: {
+    ButtonBase,
     IconFavoritesMenu,
     IconCartoons,
     IconSeries,
@@ -112,6 +127,7 @@ export default {
     IconHome,
     SignInModal,
     AppLogotype,
+    IconClose,
   },
 
   data() {
@@ -124,10 +140,7 @@ export default {
     ...mapState("signIn", ["isAuth"]),
   },
   methods: {
-    openMenu() {
-      this.isMenuOpen ? (this.isMenuOpen = false) : (this.isMenuOpen = true);
-    },
-    closeMenu(event) {
+    close(event) {
       if (event.target.tagName === "A") {
         this.isMenuOpen = false;
       }
@@ -156,6 +169,7 @@ export default {
     height: 1.1rem;
     opacity: 0.5;
     z-index: 160;
+    transition: 0.3s;
   }
 
   .burger-open > span {
@@ -166,6 +180,17 @@ export default {
   }
 
   .burger-open:hover {
+    opacity: 1;
+  }
+
+  .burger-close {
+    opacity: 0.5;
+    z-index: 160;
+    padding-left: 0.2rem;
+    transition: 0.3s;
+  }
+
+  .burger-close:hover {
     opacity: 1;
   }
 
