@@ -53,11 +53,11 @@
           <ul :class="$style['genre-item']">
             <span :class="$style['genre-title']">Жанр</span>
             <li
-              v-for="genre in movieInformation.genres"
-              :key="genre"
+              v-for="(genre, index) in movieInformation.genres"
+              :key="genre.genre"
               :class="$style.genre"
             >
-              <span>{{ genre.genre }}</span>
+              <span>{{ index ? ", " : "" }}{{ genre.genre }}</span>
             </li>
           </ul>
         </ul>
@@ -116,20 +116,33 @@ export default defineComponent({
       required: false,
     },
   },
+  data() {
+    return {
+      genres: null,
+    };
+  },
+  watch: {
+    movieInformation() {
+      this.genres = this.movieInformation.genres;
+    },
+  },
   computed: {
     convertedTimeInMinutes() {
-      return this.movieInformation.filmLength % 60;
+      const minutes = 60;
+      return this.movieInformation.filmLength % minutes;
     },
     convertedTimeInHours() {
-      return Math.floor(this.movieInformation.filmLength / 60);
+      const minutes = 60;
+      return Math.floor(this.movieInformation.filmLength / minutes);
     },
     convertedTime() {
       return this.convertedTimeInHours + ":" + this.convertedTimeInMinutes;
     },
     convertedRatingAge() {
       const regExp = /\d+/;
-      const ratingAge = this.movieInformation?.ratingAgeLimits?.match(regExp);
-      return ratingAge + " +";
+      const ratingAge =
+        this.movieInformation?.ratingAgeLimits?.match(regExp) + " +";
+      return ratingAge;
     },
   },
 });
