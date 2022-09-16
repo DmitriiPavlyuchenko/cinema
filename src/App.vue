@@ -4,7 +4,7 @@
     <div class="container">
       <div v-if="!isAuth" :class="$style['main-view']">
         <router-view v-slot="{ Component }">
-          <Component :is="Component"></Component>
+          <Component :is="Component" :key="$route.path"></Component>
         </router-view>
       </div>
     </div>
@@ -43,5 +43,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  padding: 5rem 0;
 }
 </style>

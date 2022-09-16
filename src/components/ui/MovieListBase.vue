@@ -58,10 +58,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-.movie-list {
-  padding-top: 3.5rem;
-}
-
 .list {
   display: grid;
   grid-column-gap: 2rem;
