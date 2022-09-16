@@ -28,7 +28,10 @@
     <span :class="[$style.rating, ratingColor]">{{
       movieInformation.ratingKinopoisk
     }}</span>
-    <AppFavoriteButton :movie-id="movieInformation.kinopoiskId" />
+    <AppFavoriteButton
+      :movie-id="movieInformation.kinopoiskId"
+      @click="removeMovie"
+    />
   </div>
 </template>
 
@@ -49,6 +52,11 @@ export default {
       return this.movieInformation.ratingKinopoisk > 5
         ? "rating-green"
         : "rating-red";
+    },
+  },
+  methods: {
+    removeMovie() {
+      this.$emit("removeMovie", this.movieInformation.kinopoiskId);
     },
   },
 };

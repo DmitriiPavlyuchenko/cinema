@@ -1,6 +1,10 @@
 <template>
   <header :class="$style.header">
-    <div :class="$style['container-header']" class="container">
+    <div
+      :class="$style['container-header']"
+      class="container"
+      @click="closeMenu"
+    >
       <div :class="$style['menu-wrapper']">
         <button :class="$style['burger-open']" @click="openMenu">
           <span></span>
@@ -99,7 +103,6 @@ import { mapState } from "vuex";
 import SignInModal from "@/components/modals/SignInModal";
 import IconHome from "@/components/icons/IconHome";
 import IconMovie from "@/components/icons/IconMovie";
-import IconBase from "@/components/ui/IconBase";
 import IconSeries from "@/components/icons/IconSeries";
 import IconCartoons from "@/components/icons/IconCartoons";
 import IconFavoritesMenu from "@/components/icons/IconFavoritesMenu";
@@ -110,7 +113,6 @@ export default {
     IconFavoritesMenu,
     IconCartoons,
     IconSeries,
-    IconBase,
     IconMovie,
     IconHome,
     SignInModal,
@@ -128,6 +130,11 @@ export default {
   methods: {
     openMenu() {
       this.isMenuOpen ? (this.isMenuOpen = false) : (this.isMenuOpen = true);
+    },
+    closeMenu(event) {
+      if (event.target.tagName === "A") {
+        this.isMenuOpen = false;
+      }
     },
   },
 };

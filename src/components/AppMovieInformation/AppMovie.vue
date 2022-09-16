@@ -10,7 +10,7 @@
     </div>
     <!--    <AppTrailer :trailer="trailer" />-->
   </div>
-  <!--  <AppSimilarMovies :similarMovies="similarMovies" />-->
+  <AppSimilarMovies :similarMovies="similarMovies" />
 </template>
 
 <script>
@@ -22,7 +22,7 @@ import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 
 export default {
   name: "AppMovie",
-  components: { AppMovieInformation },
+  components: { AppMovieInformation, AppSimilarMovies },
   // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformationAppSimilarMovies
   data() {
     return {

@@ -5,7 +5,7 @@
       :key="movie.kinopoiskId"
       :class="$style['favorite-item']"
     >
-      <AppFavoriteItem :movieInformation="movie" />
+      <AppFavoriteItem :movieInformation="movie" @removeMovie="removeMovie" />
     </li>
   </ul>
   <span v-else class="list-empty">Список избранных фильмов пустой</span>
@@ -21,6 +21,7 @@ export default {
   components: {
     AppFavoriteItem,
   },
+  emits: ["removeMovie"],
   data() {
     return {
       moviesInformation: [],
@@ -49,6 +50,11 @@ export default {
         console.log(e);
       }
     },
+    removeMovie(id) {
+      this.moviesInformation = this.moviesInformation.filter((movie) => {
+        return movie.kinopoiskId !== id;
+      });
+    },
   },
 };
 </script>
@@ -58,6 +64,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 5rem 0;
 }
 
 .favorite-item {
