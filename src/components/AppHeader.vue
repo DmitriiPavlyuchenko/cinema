@@ -12,13 +12,7 @@
           <span></span>
         </button>
         <router-link :class="$style['logo-link']" :to="{ name: 'home' }">
-          <img
-            :class="$style['logo-img']"
-            alt="logo"
-            height="56"
-            src="@/assets/img/logo.svg"
-            width="56"
-          />
+          <AppLogotype />
         </router-link>
         <nav v-show="isMenuOpen" :class="$style.menu">
           <ul :class="$style['menu-list']">
@@ -54,7 +48,7 @@
             <li class="menu-item">
               <router-link
                 :class="$style['menu-link']"
-                :to="{ name: 'series' }"
+                :to="{ name: 'cartoons' }"
               >
                 <IconBase height="18" icon-name="movie" width="18">
                   <IconCartoons />
@@ -106,6 +100,7 @@ import IconMovie from "@/components/icons/IconMovie";
 import IconSeries from "@/components/icons/IconSeries";
 import IconCartoons from "@/components/icons/IconCartoons";
 import IconFavoritesMenu from "@/components/icons/IconFavoritesMenu";
+import AppLogotype from "@/components/AppLogotype";
 
 export default {
   name: "AppHeader",
@@ -116,6 +111,7 @@ export default {
     IconMovie,
     IconHome,
     SignInModal,
+    AppLogotype,
   },
 
   data() {
@@ -185,22 +181,6 @@ export default {
   .logo-link {
     display: inline-block;
     z-index: 160;
-  }
-
-  .logo-img {
-    animation-name: logo-rotation;
-    animation-duration: 7s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-  }
-
-  @keyframes logo-rotation {
-    from {
-      transform: rotate(0grad) rotateY(0grad) rotateX(0grad);
-    }
-    to {
-      transform: rotate(400grad) rotateY(400grad) rotateX(400grad);
-    }
   }
 
   .menu {

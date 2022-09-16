@@ -9,6 +9,7 @@
       </div>
     </div>
   </main>
+  <AppFooter />
 </template>
 
 <script lang="ts">
@@ -17,10 +18,11 @@ import "@/assets/styles/style.scss";
 import { mapActions } from "vuex";
 import AppHeader from "@/components/AppHeader.vue";
 import AppBanner from "@/components/AppBanner.vue";
+import AppFooter from "@/components/AppFooter.vue";
 
 export default defineComponent({
   name: "App",
-  components: { AppHeader },
+  components: { AppFooter, AppHeader },
   mounted() {
     this.isUserLoggedIn();
   },
