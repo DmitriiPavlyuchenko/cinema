@@ -41,6 +41,7 @@ import AppFavoriteButton from "@/components/AppFavorites/AppFavoriteButton";
 export default {
   name: "AppFavoriteItem",
   components: { AppFavoriteButton },
+  emits: ["removeMovie"],
   props: {
     movieInformation: {
       type: Object,

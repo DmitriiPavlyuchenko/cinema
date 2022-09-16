@@ -1,12 +1,14 @@
 <template>
   <ul v-if="hasMovies" :class="$style['favorite-list']">
-    <li
-      v-for="movie of moviesInformation"
-      :key="movie.kinopoiskId"
-      :class="$style['favorite-item']"
-    >
-      <AppFavoriteItem :movieInformation="movie" @removeMovie="removeMovie" />
-    </li>
+    <ListTransition>
+      <li
+        v-for="movie of moviesInformation"
+        :key="movie.kinopoiskId"
+        :class="$style['favorite-item']"
+      >
+        <AppFavoriteItem :movieInformation="movie" @removeMovie="removeMovie" />
+      </li>
+    </ListTransition>
   </ul>
   <span v-else class="list-empty">Список избранных фильмов пустой</span>
 </template>
@@ -15,13 +17,14 @@
 import AppFavoriteItem from "@/components/AppFavorites/AppFavoriteItem";
 import { mapActions } from "vuex";
 import { getItem } from "@/helpers/persistanceStorage";
+import ListTransition from "@/components/transitions/ListTransition";
 
 export default {
   name: "AppFavoriteList",
   components: {
     AppFavoriteItem,
+    ListTransition,
   },
-  emits: ["removeMovie"],
   data() {
     return {
       moviesInformation: [],
