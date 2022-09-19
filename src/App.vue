@@ -2,11 +2,13 @@
   <AppHeader />
   <main :class="$style.main">
     <div class="container">
-      <div v-if="!isAuth" :class="$style['main-view']">
-        <router-view v-slot="{ Component }">
-          <Component :is="Component" :key="$route.path"></Component>
-        </router-view>
-      </div>
+      <router-view v-slot="{ Component }">
+        <PageTransition>
+          <div :key="$route.path" :class="$style['main-view']">
+            <Component :is="Component" />
+          </div>
+        </PageTransition>
+      </router-view>
     </div>
   </main>
   <AppFooter />
@@ -17,12 +19,12 @@ import { defineComponent } from "vue";
 import "@/assets/styles/style.scss";
 import { mapActions } from "vuex";
 import AppHeader from "@/components/AppHeader.vue";
-import AppBanner from "@/components/AppBanner.vue";
+import PageTransition from "@/components/transitions/PageTransition.vue";
 import AppFooter from "@/components/AppFooter.vue";
 
 export default defineComponent({
   name: "App",
-  components: { AppFooter, AppHeader },
+  components: { AppFooter, AppHeader, PageTransition },
   mounted() {
     this.isUserLoggedIn();
   },
