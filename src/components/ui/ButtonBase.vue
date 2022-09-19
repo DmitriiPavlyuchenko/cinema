@@ -9,5 +9,3 @@ export default {
   name: "ButtonBase",
 };
 </script>
-
-<style scoped></style>

@@ -22,7 +22,7 @@
             autocomplete="off"
             placeholder="Пароль"
           ></InputBase>
-          <button
+          <ButtonBase
             :class="$style['show-password']"
             type="button"
             @click="changeType"
@@ -31,7 +31,7 @@
               <IconEye v-if="typePassword"></IconEye>
               <IconEyeBlocked v-else></IconEyeBlocked>
             </IconBase>
-          </button>
+          </ButtonBase>
         </label>
         <ButtonBase :class="$style.enter" type="submit" @click="signIn"
           >Вход
@@ -46,13 +46,14 @@ import { defineComponent } from "vue";
 import { mapActions } from "vuex";
 import IconEye from "@/components/icons/IconEye";
 import IconEyeBlocked from "@/components/icons/IconEyeBlocked";
+import ButtonBase from "@/components/ui/ButtonBase";
 
 const typePassword = "password";
 const typeText = "text";
 
 export default defineComponent({
   name: "SignInModal",
-  components: { IconEyeBlocked, IconEye },
+  components: { ButtonBase, IconEyeBlocked, IconEye },
   props: {
     isModalOpen: {
       type: Boolean,
@@ -121,9 +122,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-.modal-title {
-}
-
 .sign_in-form {
   display: flex;
   gap: 1rem;
