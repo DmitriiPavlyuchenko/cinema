@@ -38,9 +38,6 @@ export default {
 
 <style lang="scss" module>
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   background-color: $dark;
 }
