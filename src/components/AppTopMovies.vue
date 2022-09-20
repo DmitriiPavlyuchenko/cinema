@@ -1,6 +1,6 @@
 <template>
   <MovieListBase :movies="showMovies">
-    <template #list-title>Лучшие 250 фильмов</template>
+    <template #list-title>Лучшие фильмы</template>
     <template #open-all>
       <router-link :class="$style['open-all']" :to="{ name: 'movies' }"
         >Смотреть все</router-link
