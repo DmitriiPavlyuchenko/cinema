@@ -72,21 +72,21 @@ export const cinemaStore: Module<Cinema, RootStore> = {
     },
   },
   actions: {
-    async getPremieres(context) {
-      try {
-        const date = new Date();
-        const year = date.getFullYear();
-        const month = convertDateMonth(date.getMonth());
-        const data = { year: year, month: month };
-        const response = await getPremiers(data);
-        if (response.status === SERVER_RESPONSE.CODE_200) {
-          const tenPremieres = response.data.items.slice(0, 10);
-          context.commit("SET_PREMIERES", tenPremieres);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    },
+    // async getPremieres(context) {
+    //   try {
+    //     const date = new Date();
+    //     const year = date.getFullYear();
+    //     const month = convertDateMonth(date.getMonth());
+    //     const data = { year: year, month: month };
+    //     const response = await getPremiers(data);
+    //     if (response.status === SERVER_RESPONSE.CODE_200) {
+    //       const tenPremieres = response.data.items.slice(0, 10);
+    //       context.commit("SET_PREMIERES", response.data.items);
+    //     }
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // },
     async getMovieInformation(context, id) {
       try {
         const response = await getMovie(id);
@@ -128,29 +128,18 @@ export const cinemaStore: Module<Cinema, RootStore> = {
         console.log(e);
       }
     },
-    async getTopMovies(context) {
-      try {
-        const firstPage = 1;
-        const lastPage = 13;
-        const page = generateRandomNumber(firstPage, lastPage);
-        const response = await getTopMovies(page);
-        if (response.status === SERVER_RESPONSE.CODE_200) {
-          context.commit("SET_TOP_MOVIES", response.data);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    },
-    async getTopAwaitMovies(context) {
-      try {
-        const page = 1;
-        const response = await getTopAwaitMovies(page);
-        if (response.status === SERVER_RESPONSE.CODE_200) {
-          context.commit("SET_TOP_AWAIT_MOVIES", response.data);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    },
+    // async getTopMovies(context) {
+    //   try {
+    //     const firstPage = 1;
+    //     const lastPage = 13;
+    //     const page = generateRandomNumber(firstPage, lastPage);
+    //     const response = await getTopMovies(page);
+    //     if (response.status === SERVER_RESPONSE.CODE_200) {
+    //       context.commit("SET_TOP_MOVIES", response.data);
+    //     }
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // },
   },
 };

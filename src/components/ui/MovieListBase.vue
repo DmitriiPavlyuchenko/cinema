@@ -37,7 +37,9 @@
         </li>
       </ul>
     </div>
-    <ButtonBase :class="$style['show-more']">Показать еще</ButtonBase>
+    <div :class="$style['button-wrapper']">
+      <slot name="show-more"></slot>
+    </div>
   </div>
 </template>
 
@@ -47,7 +49,6 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "MovieListBase",
   components: {},
-
   props: {
     movies: {
       type: [Object, null],
@@ -58,6 +59,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
+@import "@/assets/styles/utils/mixins.scss";
+
 .list {
   display: grid;
   grid-column-gap: 2rem;
@@ -68,6 +71,12 @@ export default defineComponent({
 
 .list-item {
   border-radius: 2rem;
+}
+
+.movie-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card {
@@ -123,15 +132,9 @@ export default defineComponent({
   left: 0.5rem;
 }
 
-.show-more {
-  display: block;
-  margin: 2rem auto 0;
-  padding: 0.5rem 1rem;
-  background-color: $purple;
-  border-radius: 0.3rem;
-}
-
-.show-more:hover {
-  background-color: $purple-hover;
+.button-wrapper {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 </style>
