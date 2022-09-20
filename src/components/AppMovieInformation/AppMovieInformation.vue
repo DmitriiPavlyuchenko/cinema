@@ -54,17 +54,15 @@
               >{{ country.country }}</span
             >
           </li>
-          <ul class="movie-genres">
-            <ul :class="$style['genre-item']">
-              <span :class="$style['genre-title']">Жанр</span>
-              <li
-                v-for="(genre, index) in movieInformation.genres"
-                :key="genre.genre"
-                :class="$style.genre"
-              >
-                <span>{{ index ? ", " : "" }}{{ genre.genre }}</span>
-              </li>
-            </ul>
+          <ul :class="$style['movie-genres']">
+            <li :class="$style['genre-title']">Жанр</li>
+            <li
+              v-for="(genre, index) in movieInformation.genres"
+              :key="genre.genre"
+              :class="$style.genre"
+            >
+              <span>{{ index ? ", " : "" }}{{ genre.genre }}</span>
+            </li>
           </ul>
           <li v-if="movieInformation.slogan" class="slogan-wrapper">
             <span class="slogan-title">Слоган</span>
@@ -89,7 +87,10 @@
     </div>
     <div :class="$style['movie-main-wrapper']">
       <div :class="$style['movie-body']">
-        <h2 :class="$style['movie-body-title']">Описание</h2>
+        <ul :class="$style['movie-body-list']">
+          <li :class="$style['movie-list-title']">Описание</li>
+          <li :class="$style['movie-list-title']">Актеры</li>
+        </ul>
         <p :class="$style['movie-description']">
           {{ movieInformation.description }}
         </p>
@@ -220,10 +221,6 @@ export default defineComponent({
   display: inline-block;
 }
 
-.movie-body-title {
-  font-size: 1.2rem;
-}
-
 .movie-footer {
   padding-top: 3rem;
   font-size: 0.85rem;
@@ -238,9 +235,31 @@ export default defineComponent({
   justify-content: space-between;
 }
 
+.movie-body-list {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  padding: 0.8rem 0;
+  border-bottom: 0.05rem solid $grey;
+}
+
+.movie-list-title:hover:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  border-bottom: 0.05rem solid $purple;
+  padding-bottom: 0.8rem;
+}
+
+.movie-list-title:hover {
+  color: $grey;
+}
+
 .movie-poster-wrapper {
   position: relative;
   width: 100%;
+  background-color: $text-color;
   height: auto;
 }
 
@@ -252,6 +271,7 @@ export default defineComponent({
   max-width: 12rem;
   display: block;
   width: 100%;
+  height: 100%;
 }
 
 .genre-item {
@@ -279,6 +299,15 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+}
+
+.movie-description {
+  font-size: 0.75rem;
+}
+
+.movie-list-title {
+  cursor: pointer;
+  position: relative;
 }
 
 .movie-about-title {
