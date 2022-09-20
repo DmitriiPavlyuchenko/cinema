@@ -1,15 +1,17 @@
 <template>
-  <ButtonBase :class="$style.back" @click="$router.go(-1)">
-    <IconBase
-      :class="$style['icon-back']"
-      height="17"
-      icon-name="arrow-left"
-      width="17"
-    >
-      <IconArrowLeft />
-    </IconBase>
-    <span>Назад</span>
-  </ButtonBase>
+  <div class="buttons">
+    <ButtonBase :class="$style.back" @click="$router.go(-1)">
+      <IconBase
+        :class="$style['icon-back']"
+        height="17"
+        icon-name="arrow-left"
+        width="17"
+      >
+        <IconArrowLeft />
+      </IconBase>
+      <span>Назад</span>
+    </ButtonBase>
+  </div>
   <div :class="$style.movie">
     <div :class="$style['movie-information-wrapper']">
       <AppMovieInformation
@@ -77,7 +79,7 @@ export default {
 
 <style lang="scss" module>
 .back {
-  display: flex;
+  display: inline-flex;
   gap: 0.3rem;
   align-items: center;
   transition: 0.3s;
