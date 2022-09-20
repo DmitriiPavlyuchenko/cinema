@@ -1,4 +1,15 @@
 <template>
+  <ButtonBase :class="$style.back" @click="$router.go(-1)">
+    <IconBase
+      :class="$style['icon-back']"
+      height="17"
+      icon-name="arrow-left"
+      width="17"
+    >
+      <IconArrowLeft />
+    </IconBase>
+    <span>Назад</span>
+  </ButtonBase>
   <div :class="$style.movie">
     <div :class="$style['movie-information-wrapper']">
       <AppMovieInformation
@@ -18,11 +29,18 @@ import AppMovieInformation from "@/components/AppMovieInformation/AppMovieInform
 import AppSimilarMovies from "@/components/AppMovieInformation/AppSimilarMovies";
 import AppStaff from "@/components/AppMovieInformation/AppStaff";
 import { mapActions, mapGetters } from "vuex";
+import IconArrowLeft from "@/components/icons/IconArrowLeft";
 import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
+import ButtonBase from "@/components/ui/ButtonBase";
 
 export default {
   name: "AppMovie",
-  components: { AppMovieInformation, AppSimilarMovies },
+  components: {
+    ButtonBase,
+    AppMovieInformation,
+    AppSimilarMovies,
+    IconArrowLeft,
+  },
   // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformationAppSimilarMovies
   data() {
     return {
@@ -58,8 +76,16 @@ export default {
 </script>
 
 <style lang="scss" module>
-.movie {
-  padding: 1.5rem 0;
+.back {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  transition: 0.3s;
+  font-size: 0.8rem;
+}
+
+.back:hover > .icon-back {
+  transform: translateX(-0.1rem);
 }
 
 .movie-information-wrapper {
