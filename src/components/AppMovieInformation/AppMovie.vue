@@ -23,7 +23,7 @@
     </div>
     <!--    <AppTrailer :trailer="trailer" />-->
   </div>
-  <AppSimilarMovies :similarMovies="similarMovies" />
+  <!--  <AppSimilarMovies :similarMovies="similarMovies" />-->
 </template>
 
 <script>
@@ -82,12 +82,12 @@ export default {
   display: inline-flex;
   gap: 0.3rem;
   align-items: center;
-  transition: 0.3s;
+  transition: 0.3s ease-in;
   font-size: 0.8rem;
 }
 
 .back:hover > .icon-back {
-  transform: translateX(-0.1rem);
+  transform: translateX(-0.05rem);
 }
 
 .movie-information-wrapper {

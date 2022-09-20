@@ -19,67 +19,77 @@
         </div>
       </div>
       <ul :class="$style['movie-about-information']">
-        <h3 :class="$style['movie-title']">
-          {{ movieInformation.nameRu }} ({{ movieInformation.year }})
-        </h3>
-        <span
-          v-if="movieInformation.nameOriginal"
-          :class="$style['movie-title-en']"
-          >{{ movieInformation.nameOriginal }}
+        <li class="movie-title-wrapper">
+          <h1 :class="$style['movie-title']">
+            {{ movieInformation.nameRu }} ({{ movieInformation.year }})
+          </h1>
           <span
-            v-if="movieInformation.ratingAgeLimits"
-            :class="$style['rating-age-limits']"
-            >{{ convertedRatingAge }}</span
-          >
-        </span>
-        <div class="movie-buttons">
-          <AppFavoritesButton :movie-id="movieId" />
-        </div>
-        <h4 :class="$style['movie-about-title']">О фильме</h4>
-        <li class="year-wrapper">
-          <span class="production-year">Год производства</span>
-          <span class="year">{{ movieInformation.year }}</span>
-        </li>
-        <li :class="$style['movie-country-wrapper']">
-          <span class="country">Страна</span
-          ><span
-            v-for="country in movieInformation.countries"
-            :key="country.country"
-            :class="$style['movie-country']"
-            >{{ country.country }}</span
-          >
-        </li>
-        <ul class="movie-genres">
-          <ul :class="$style['genre-item']">
-            <span :class="$style['genre-title']">Жанр</span>
-            <li
-              v-for="(genre, index) in movieInformation.genres"
-              :key="genre.genre"
-              :class="$style.genre"
+            v-if="movieInformation.nameOriginal"
+            :class="$style['movie-title-en']"
+            >{{ movieInformation.nameOriginal }}
+            <span
+              v-if="movieInformation.ratingAgeLimits"
+              :class="$style['rating-age-limits']"
+              >{{ convertedRatingAge }}</span
             >
-              <span>{{ index ? ", " : "" }}{{ genre.genre }}</span>
-            </li>
+          </span>
+        </li>
+        <li class="movie-buttons">
+          <AppFavoritesButton :movie-id="movieId" />
+        </li>
+        <li class="movie-about-title-wrapper">
+          <h2 :class="$style['movie-about-title']">О фильме</h2>
+        </li>
+        <ul :class="$style['main-info-wrapper']">
+          <li class="year-wrapper">
+            <span class="production-year">Год производства</span>
+            <span class="year">{{ movieInformation.year }}</span>
+          </li>
+          <li :class="$style['movie-country-wrapper']">
+            <span class="country">Страна</span
+            ><span
+              v-for="country in movieInformation.countries"
+              :key="country.country"
+              :class="$style['movie-country']"
+              >{{ country.country }}</span
+            >
+          </li>
+          <ul class="movie-genres">
+            <ul :class="$style['genre-item']">
+              <span :class="$style['genre-title']">Жанр</span>
+              <li
+                v-for="(genre, index) in movieInformation.genres"
+                :key="genre.genre"
+                :class="$style.genre"
+              >
+                <span>{{ index ? ", " : "" }}{{ genre.genre }}</span>
+              </li>
+            </ul>
           </ul>
-        </ul>
-        <li v-if="movieInformation.slogan" class="slogan-wrapper">
-          <span class="slogan-title">Слоган</span>
-          <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
-        </li>
-        <li v-if="movieInformation.ratingAgeLimits" class="years-limit-wrapper">
-          <span class="year-limit-title">Возраст: </span>
-          <span class="rating-age-limits">{{ convertedRatingAge }}</span>
-        </li>
-        <li class="time-wrapper">
-          <span class="time-title">Время</span>
-          <span class="time"
-            >{{ movieInformation.filmLength }} мин. / {{ convertedTime }}</span
+          <li v-if="movieInformation.slogan" class="slogan-wrapper">
+            <span class="slogan-title">Слоган</span>
+            <p :class="$style['slogan']">"{{ movieInformation.slogan }}"</p>
+          </li>
+          <li
+            v-if="movieInformation.ratingAgeLimits"
+            class="years-limit-wrapper"
           >
-        </li>
+            <span class="year-limit-title">Возраст</span>
+            <span class="rating-age-limits">{{ convertedRatingAge }}</span>
+          </li>
+          <li class="time-wrapper">
+            <span class="time-title">Время</span>
+            <span class="time"
+              >{{ movieInformation.filmLength }} мин. /
+              {{ convertedTime }}</span
+            >
+          </li>
+        </ul>
       </ul>
     </div>
     <div :class="$style['movie-main-wrapper']">
       <div :class="$style['movie-body']">
-        <h4 :class="$style['movie-body-title']">Описание</h4>
+        <h2 :class="$style['movie-body-title']">Описание</h2>
         <p :class="$style['movie-description']">
           {{ movieInformation.description }}
         </p>
@@ -180,13 +190,15 @@ export default defineComponent({
 
 .movie-about-information {
   display: flex;
-  gap: 0.8rem;
+  gap: 1.3rem;
   flex-direction: column;
+  font-size: 0.7rem;
+  color: $text-color;
 }
 
-.movie-about-information > li > :first-child {
+.main-info-wrapper > li > :first-child {
   color: $grey;
-  min-width: 11.5rem;
+  min-width: 8.5rem;
   display: inline-block;
 }
 
@@ -196,7 +208,7 @@ export default defineComponent({
 
 .genre-title {
   color: $grey;
-  min-width: 11.5rem;
+  min-width: 8.5rem;
   display: inline-block;
 }
 
@@ -263,9 +275,15 @@ export default defineComponent({
   gap: 0.3rem;
 }
 
+.main-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
 .movie-about-title {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .rating-age-limits {
