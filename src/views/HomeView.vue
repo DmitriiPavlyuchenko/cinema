@@ -1,6 +1,6 @@
 <template>
-  <!--  <AppPremieres />-->
-  <AppTopMovies />
+  <AppPremieres />
+  <!--  <AppTopMovies />-->
 </template>
 
 <script lang="ts">
@@ -12,7 +12,7 @@ import AppTopMovies from "@/components/AppTopMovies.vue";
 export default defineComponent({
   name: "HomeView",
   //,AppTopMovies, AppTopMovies,
-  components: { AppTopMovies },
+  components: { AppPremieres },
   getters: {
     ...mapGetters("signIn", ["isAuth"]),
   },

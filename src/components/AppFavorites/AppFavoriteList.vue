@@ -45,8 +45,8 @@ export default {
         const favoriteMovies = Array.from(getItem("favorites"));
         if (favoriteMovies) {
           for (let movie of favoriteMovies) {
-            const movieS = await this.getMovieInformation(movie);
-            this.moviesInformation.push(movieS);
+            const movieInformation = await this.getMovieInformation(movie);
+            this.moviesInformation.push(movieInformation);
           }
         }
       } catch (e) {

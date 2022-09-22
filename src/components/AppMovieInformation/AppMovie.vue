@@ -40,7 +40,6 @@ export default {
   components: {
     ButtonBase,
     AppMovieInformation,
-    AppSimilarMovies,
     IconArrowLeft,
   },
   // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformationAppSimilarMovies
