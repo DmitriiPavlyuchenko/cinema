@@ -28,7 +28,7 @@
             @click="changeType"
           >
             <IconBase height="18" width="18">
-              <IconEye v-if="typePassword"></IconEye>
+              <IconEye v-if="typePassword" class="icon-eye"></IconEye>
               <IconEyeBlocked v-else></IconEyeBlocked>
             </IconBase>
           </ButtonBase>
@@ -53,7 +53,11 @@ const typeText = "text";
 
 export default defineComponent({
   name: "SignInModal",
-  components: { ButtonBase, IconEyeBlocked, IconEye },
+  components: {
+    ButtonBase,
+    IconEyeBlocked,
+    IconEye,
+  },
   props: {
     isModalOpen: {
       type: Boolean,
@@ -122,6 +126,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
+@import "@/assets/styles/utils/variables.scss";
 .sign_in-form {
   display: flex;
   gap: 1rem;

@@ -7,6 +7,11 @@ import Toaster from "@meforma/vue-toaster/src";
 
 const app = createApp(App);
 
+app.config.compilerOptions.isCustomElement = (tag) => {
+  console.log(tag.includes("Base"));
+  return tag.includes("Base");
+};
+
 components.forEach((component: { name: string }) => {
   app.component(component.name, component);
 });

@@ -8,7 +8,7 @@ import FavoritesView from "@/views/FavoritesView.vue";
 import CartoonsView from "@/views/CartoonsView.vue";
 import SeriesView from "@/views/SeriesView.vue";
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
