@@ -75,11 +75,11 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  border-top: 1px solid $purple-dark;
+  border-top: 1px solid var(--purple-dark);
 }
 
 .favorite-item:hover {
-  box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem $purple;
+  box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem var(--purple);
   border-radius: 0.5rem;
   background-color: rgba(77, 77, 77, 0.53);
 }

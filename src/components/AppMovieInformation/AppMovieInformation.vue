@@ -160,7 +160,7 @@ export default defineComponent({
 
 .movie-title-en {
   font-size: 0.8rem;
-  color: $grey;
+  color: var(--grey);
   display: flex;
   align-items: center;
 }
@@ -185,7 +185,7 @@ export default defineComponent({
 }
 
 .movie-about-information > li > :first-child {
-  color: $grey;
+  color: var(--grey);
   min-width: 11.5rem;
   display: inline-block;
 }
@@ -195,7 +195,7 @@ export default defineComponent({
 }
 
 .genre-title {
-  color: $grey;
+  color: var(--grey);
   min-width: 11.5rem;
   display: inline-block;
 }
@@ -247,7 +247,7 @@ export default defineComponent({
 }
 
 .rating {
-  background: $success;
+  background: var(--success);
   padding: 0.2rem 0.4rem;
   border-radius: 0.2rem;
   font-size: 0.8rem;
@@ -269,7 +269,7 @@ export default defineComponent({
 }
 
 .rating-age-limits {
-  border: 0.05rem solid $grey;
+  border: 0.05rem solid var(--grey);
   padding: 0.07rem 0.1rem;
   font-size: 0.5rem;
   margin-left: 0.3rem;

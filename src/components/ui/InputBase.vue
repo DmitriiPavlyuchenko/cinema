@@ -21,10 +21,10 @@ export default defineComponent({
 
 <style lang="scss" module>
 input {
-  color: $black;
+  color: var(--black);
 }
 
 input::placeholder {
-  color: $black;
+  color: var(--black);
 }
 </style>

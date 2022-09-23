@@ -6,16 +6,20 @@
       </router-link>
       <ul :class="$style['menu-list']">
         <li :class="$style['menu-item']">
-          <router-link :class="$style['menu-link']" :to="{ name: 'movies' }">
+          <router-link
+            :class="$style['menu-link']"
+            :to="{ name: 'movies' }"
+            class="link"
+          >
             Кино
           </router-link>
         </li>
-        <li :class="$style['menu-item']">
+        <li :class="$style['menu-item']" class="link">
           <router-link :class="$style['menu-link']" :to="{ name: 'series' }">
             Сериалы
           </router-link>
         </li>
-        <li :class="$style['menu-item']">
+        <li :class="$style['menu-item']" class="link">
           <router-link :class="$style['menu-link']" :to="{ name: 'cartoons' }">
             Мультики
           </router-link>
@@ -42,7 +46,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: $dark;
+  background-color: var(--dark);
 }
 
 .footer-container {
@@ -62,7 +66,7 @@ export default {
   align-items: center;
   flex: 1 1 80%;
   gap: 1.5rem;
-  color: $text-color;
+  color: var(--text-color);
   font-size: 0.8rem;
 }
 
@@ -77,7 +81,7 @@ export default {
   position: absolute;
   display: block;
   width: 100%;
-  border-bottom: 0.1rem solid $purple;
+  border-bottom: 0.1rem solid var(--purple);
   padding-bottom: 0.2rem;
 }
 

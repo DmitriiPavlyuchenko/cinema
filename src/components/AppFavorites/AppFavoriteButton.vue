@@ -84,8 +84,8 @@ export default {
 
 <style lang="scss" module>
 .add-to-favorites {
-  color: $text-color;
-  background-color: $dark;
+  color: var(--text-color);
+  background-color: var(--dark);
   padding: 0.6rem 1rem;
   border-radius: 1rem;
   display: flex;
@@ -94,7 +94,7 @@ export default {
   align-items: center;
   justify-content: center;
   opacity: 0.8;
-  border: 0.05rem solid $dark;
+  border: 0.05rem solid var(--dark);
 }
 
 .add-to-favorites:hover {
@@ -102,8 +102,8 @@ export default {
 }
 
 .remove-from-favorites {
-  color: $text-color;
-  background-color: $dark;
+  color: var(--text-color);
+  background-color: var(--dark);
   padding: 0.6rem 1rem;
   border-radius: 1rem;
   display: flex;
@@ -112,7 +112,7 @@ export default {
   align-items: center;
   justify-content: center;
   opacity: 0.8;
-  border: 0.05rem solid $purple-hover;
+  border: 0.05rem solid var(--purple-hover);
 }
 
 .remove-from-favorites:hover {

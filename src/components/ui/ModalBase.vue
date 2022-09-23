@@ -95,7 +95,7 @@ export default defineComponent({
   gap: 1rem;
   font-size: 1.5rem;
   text-align: center;
-  color: $black;
+  color: var(--black);
 }
 
 .modal-footer {
@@ -111,13 +111,13 @@ export default defineComponent({
 }
 
 .modal-button {
-  color: $black;
+  color: var(--black);
   display: inline-block;
 }
 
 .modal-close {
   position: absolute;
-  color: $black;
+  color: var(--black);
   font-size: 1.5rem;
   background-color: initial;
   top: 0.5rem;
@@ -125,6 +125,6 @@ export default defineComponent({
 }
 
 .modal-close:hover {
-  color: $purple;
+  color: var(--purple);
 }
 </style>

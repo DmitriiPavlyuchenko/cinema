@@ -97,7 +97,7 @@ export default defineComponent({
   right: 0;
   bottom: 0;
   opacity: 0.3;
-  background-color: $black;
+  background-color: var(--black);
   border-radius: 0.2rem;
 }
 
@@ -118,7 +118,7 @@ export default defineComponent({
   position: absolute;
   padding: 0.2rem 0.25rem;
   display: inline-block;
-  background-color: $success;
+  background-color: var(--success);
   top: 0.5rem;
   left: 0.5rem;
 }
@@ -127,11 +127,11 @@ export default defineComponent({
   display: block;
   margin: 2rem auto 0;
   padding: 0.5rem 1rem;
-  background-color: $purple;
+  background-color: var(--purple);
   border-radius: 0.3rem;
 }
 
 .show-more:hover {
-  background-color: $purple-hover;
+  background-color: var(--purple-hover);
 }
 </style>

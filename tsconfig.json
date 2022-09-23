@@ -1,4 +1,8 @@
 {
+  "extends": "",
+  "files": [
+    "../app/types/css-module.d.ts"
+  ],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -8,7 +12,6 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,

@@ -151,7 +151,7 @@ export default {
 
 <style lang="scss" module>
 .header {
-  background-color: $dark;
+  background-color: var(--dark);
 
   .container-header {
     min-height: 3.5rem;
@@ -175,7 +175,7 @@ export default {
   .burger-open > span {
     width: 100%;
     height: 0.1rem;
-    background-color: $text-color;
+    background-color: var(--text-color);
     display: block;
   }
 
@@ -215,7 +215,7 @@ export default {
     left: -1rem;
     padding: 4.2rem 1.2rem 1.5rem;
     border-radius: 0 0 0.5rem 0.5rem;
-    background-color: $dark-hover;
+    background-color: var(--dark-hover);
     z-index: 150;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.12), 0 1rem 1rem rgba(0, 0, 0, 0.16),
       0 2rem 1.5rem rgba(0, 0, 0, 0.24);
@@ -231,7 +231,7 @@ export default {
 
   .menu-link {
     font-size: 0.8rem;
-    color: $text-color;
+    color: var(--text-color);
     opacity: 0.5;
     transition: opacity 0.5s;
     display: flex;
@@ -245,7 +245,7 @@ export default {
 
   .selected {
     opacity: 1;
-    text-underline: $purple;
+    text-underline: var(--purple);
   }
 
   .login {

@@ -126,7 +126,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import "@/assets/styles/utils/variables.scss";
 .sign_in-form {
   display: flex;
   gap: 1rem;
@@ -139,15 +138,15 @@ input {
   width: 100%;
   padding: 0.5rem 1.5rem;
   border-radius: 0.3rem;
-  border: 2px solid $black;
+  border: 2px solid var(--black);
 }
 
 input::placeholder {
-  color: $black;
+  color: var(--black);
 }
 
 input:focus {
-  border: 2px solid $purple;
+  border: 2px solid var(--purple);
 }
 
 label {
@@ -157,18 +156,18 @@ label {
 }
 
 .enter {
-  color: $text-color;
+  color: var(--text-color);
   min-height: 2.5rem;
   min-width: 6.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $purple;
+  background-color: var(--purple);
   border-radius: 2.5rem;
 }
 
 .enter:hover {
-  background-color: $purple-hover;
+  background-color: var(--purple);
 }
 
 .password {
@@ -176,7 +175,7 @@ label {
 }
 
 .show-password {
-  color: $black;
+  color: var(--black);
   position: absolute;
   width: 10%;
   height: 100%;

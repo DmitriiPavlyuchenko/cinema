@@ -121,10 +121,10 @@ export default {
 
 <style lang="scss">
 .rating-green {
-  color: $success;
+  color: var(--success);
 }
 
 .rating-red {
-  color: $error;
+  color: var(--error);
 }
 </style>

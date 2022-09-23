@@ -13,13 +13,16 @@
 //   });
 //
 //   it("Redirect on Home", async () => {
-//     await router.push({ name: "home" });
-//     await router.isReady();
 //     wrapper = mount(AppFooter, {
 //       global: {
 //         plugins: [router],
 //       },
 //     });
-//     expect(wrapper.findComponent(HomeView).exists()).toBe(true);
+//     const button = wrapper.findAllComponents(".link");
+//     expect(button).toHaveLength(3);
+//     router.push({ name: "home" });
+//     await router.isReady();
+//
+//     expect(wrapper.html()).toContain("Кино");
 //   });
 // });

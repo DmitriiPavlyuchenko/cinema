@@ -159,7 +159,7 @@ input::-webkit-slider-thumb {
   position: relative;
   z-index: 10;
   outline: 0;
-  background: $purple;
+  background: var(--purple);
 }
 
 input::-moz-range-thumb {
@@ -168,13 +168,13 @@ input::-moz-range-thumb {
   z-index: 10;
   -moz-appearance: none;
   width: 9px;
-  background: $purple;
+  background: var(--purple);
 }
 
 input::-moz-range-track {
   position: relative;
   z-index: -1;
-  background-color: $purple;
+  background-color: var(--purple);
   border: 0;
 }
 

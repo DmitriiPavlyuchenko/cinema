@@ -29,7 +29,7 @@ export default {
 .filter-item {
   display: inline-flex;
   font-size: 0.6rem;
-  border: 0.05rem solid $text-color;
+  border: 0.05rem solid var(--text-color);
   padding: 0.3rem;
   border-radius: 0.2rem;
 }

@@ -89,12 +89,12 @@ export default defineComponent({
     font-size: 1.2rem;
     display: flex;
     align-items: center;
-    color: $grey;
+    color: var(--grey);
     transition: color 0.5s;
   }
 
   .menu-open:hover {
-    color: $text-color;
+    color: var(--text-color);
   }
 
   .menu-list {
@@ -121,7 +121,7 @@ export default defineComponent({
 
   .menu-link {
     font-size: 0.8rem;
-    color: $grey;
+    color: var(--grey);
     transition: color 0.5s;
     display: flex;
   }
@@ -143,7 +143,7 @@ export default defineComponent({
   }
 
   .menu-link:hover {
-    color: $text-color;
+    color: var(--text-color);
   }
 
   .active {

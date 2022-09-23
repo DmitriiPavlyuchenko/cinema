@@ -1,25 +1,10 @@
-const { defaults } = require("@vue/cli-service/lib/options");
-
-// module.exports = {
-//   preset: "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
-// };
-
-const config = {
+module.exports = {
   preset: "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
-  moduleFileExtensions: [
-    "ts",
-    "css",
-    "scss",
-    "png",
-    "jpg",
-    "ttf",
-    "woff",
-    "woff2",
-    "js",
-    "jsx",
-    "json",
-    "vue",
-  ],
+  moduleNameMapper: {
+    "\\.(css|scss|less)$": "identity-obj-proxy",
+  },
+  // transform: {
+  //   ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$":
+  //     "jest-transform-stub",
+  // },
 };
-
-module.exports = config;
