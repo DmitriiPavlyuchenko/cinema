@@ -29,11 +29,11 @@
 <script>
 import AppMovieInformation from "@/components/AppMovieInformation/AppMovieInformation";
 import AppSimilarMovies from "@/components/AppMovieInformation/AppSimilarMovies";
-import AppStaff from "@/components/AppMovieInformation/AppStaff";
 import { mapActions, mapGetters } from "vuex";
 import IconArrowLeft from "@/components/icons/IconArrowLeft";
 import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 import ButtonBase from "@/components/ui/ButtonBase";
+import { getFacts } from "@/api/cinema/movie/movie-information";
 
 export default {
   name: "AppMovie",

@@ -87,31 +87,44 @@
     </div>
     <div :class="$style['movie-main-wrapper']">
       <div :class="$style['movie-body']">
-        <ul :class="$style['movie-body-list']">
-          <li :class="$style['movie-list-title']">Описание</li>
-          <li :class="$style['movie-list-title']">Актеры</li>
-        </ul>
-        <p :class="$style['movie-description']">
-          {{ movieInformation.description }}
-        </p>
+        <div :class="$style.tab">
+          <div :class="$style['tab-wrapper']">
+            <ButtonBase
+              v-for="tab in tabs"
+              :key="tab"
+              :class="$style['tab-button']"
+              @click="currentTab = tab"
+              >{{ tab }}
+            </ButtonBase>
+          </div>
+          <div :class="$style['tab-content-wrapper']">
+            <AppTabHome
+              v-if="currentTab === 'Описание'"
+              :class="$style['tab-content']"
+              :description="movieInformation.description"
+            ></AppTabHome>
+            <AppTabStaffs v-else :staff="staff"></AppTabStaffs>
+          </div>
+        </div>
       </div>
-    </div>
-    <div :class="$style['movie-footer']">
-      <AppStaff :class="$style['movie-staff']" :staff="staff" />
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import AppStaff from "@/components/AppMovieInformation/AppStaff";
 import AppFavoritesButton from "@/components/AppFavorites/AppFavoriteButton";
+import ButtonBase from "@/components/ui/ButtonBase";
+import AppTabHome from "@/components/AppMovieInformation/AppTabDescription";
+import AppTabStaffs from "@/components/AppMovieInformation/AppTabStaffs";
 
 export default defineComponent({
   name: "AppMovieInformation",
   components: {
-    AppStaff,
+    ButtonBase,
     AppFavoritesButton,
+    AppTabStaffs,
+    AppTabHome,
   },
   props: {
     movieInformation: {
@@ -119,7 +132,7 @@ export default defineComponent({
       required: true,
     },
     staff: {
-      type: Object,
+      type: Array,
       required: true,
     },
     movieId: {
@@ -130,6 +143,8 @@ export default defineComponent({
   data() {
     return {
       genres: null,
+      tabs: ["Описание", "Актеры"],
+      currentTab: "Описание",
     };
   },
   watch: {
@@ -217,6 +232,11 @@ export default defineComponent({
   display: inline-block;
 }
 
+.tab-content-wrapper {
+  padding-top: 2rem;
+  font-size: 0.75rem;
+}
+
 .slogan {
   display: inline-block;
 }
@@ -274,8 +294,28 @@ export default defineComponent({
   height: 100%;
 }
 
+.tab-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
 .genre-item {
   display: flex;
+}
+
+.tab-button {
+  font-size: 0.9rem;
+  position: relative;
+  color: $grey;
+}
+
+.tab-button:hover {
+  color: $text-color;
+}
+
+.tab-button:hover:after {
+  position: absolute;
+  content: "";
 }
 
 .rating {
