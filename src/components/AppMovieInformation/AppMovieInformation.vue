@@ -34,7 +34,8 @@
             >
           </span>
         </li>
-        <li class="movie-buttons">
+        <li :class="$style['movie-buttons']">
+          <AppTrailer :movie-id="movieId" />
           <AppFavoritesButton :movie-id="movieId" />
         </li>
         <li class="movie-about-title-wrapper">
@@ -117,6 +118,7 @@ import AppFavoritesButton from "@/components/AppFavorites/AppFavoriteButton";
 import ButtonBase from "@/components/ui/ButtonBase";
 import AppTabHome from "@/components/AppMovieInformation/AppTabDescription";
 import AppTabStaffs from "@/components/AppMovieInformation/AppTabStaffs";
+import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 
 export default defineComponent({
   name: "AppMovieInformation",
@@ -125,6 +127,7 @@ export default defineComponent({
     AppFavoritesButton,
     AppTabStaffs,
     AppTabHome,
+    AppTrailer,
   },
   props: {
     movieInformation: {
@@ -281,6 +284,7 @@ export default defineComponent({
   width: 100%;
   background-color: $text-color;
   height: auto;
+  border-radius: 0.25rem;
 }
 
 .movie-country-wrapper {
@@ -288,10 +292,11 @@ export default defineComponent({
 }
 
 .movie-poster {
-  max-width: 12rem;
+  max-width: 15rem;
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 0.25rem;
 }
 
 .tab-wrapper {
@@ -365,5 +370,10 @@ export default defineComponent({
 .movie-main-wrapper {
   display: flex;
   padding-top: 3rem;
+}
+
+.movie-buttons {
+  display: flex;
+  gap: 1rem;
 }
 </style>
