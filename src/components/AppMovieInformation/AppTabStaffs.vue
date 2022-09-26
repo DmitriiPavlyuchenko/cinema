@@ -3,9 +3,13 @@
     >Актеры
     <span :class="$style['actor-number']">{{ numbersActors }}</span></span
   >
-  <ul :class="$style.actors">
-    <li v-for="actor in staff" :key="actor" :class="$style['actor-card']">
-      <div :class="$style['image-wrapper']">
+  <ul :class="$style['actor-list']">
+    <li
+      v-for="(actor, index) in staff"
+      :key="index"
+      :class="$style['actor-card']"
+    >
+      <div>
         <img
           :alt="actor.nameRu"
           :class="$style['actor-image']"
@@ -18,7 +22,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "AppTabStaffs",
   props: {
     staff: {
@@ -31,13 +37,15 @@ export default {
       return "(" + this.staff.length + ")";
     },
   },
-};
+});
 </script>
 
+<style></style>
+
 <style lang="scss" module>
-.actors {
+.actor-list {
+  padding-top: 1.5rem;
   display: flex;
-  padding-top: 1rem;
   gap: 1.5rem;
 }
 
@@ -46,6 +54,7 @@ export default {
   flex-direction: column;
   font-size: 0.8rem;
   gap: 0.5rem;
+  width: 12rem;
 }
 
 .actor-block-title {
@@ -61,9 +70,5 @@ export default {
   width: 100%;
   height: auto;
   border-radius: 0.3rem;
-}
-
-.image-wrapper {
-  width: 10rem;
 }
 </style>

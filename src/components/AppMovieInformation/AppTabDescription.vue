@@ -7,8 +7,8 @@ export default {
   name: "AppTabDescription",
   props: {
     description: {
-      type: String,
-      required: true,
+      type: [String],
+      required: false,
     },
   },
 };
