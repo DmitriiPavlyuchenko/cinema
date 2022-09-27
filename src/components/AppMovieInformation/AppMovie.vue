@@ -21,7 +21,6 @@
         :staff="staff"
       />
     </div>
-    <!--    <AppTrailer :trailer="trailer" />-->
   </div>
   <!--  <AppSimilarMovies :similarMovies="similarMovies" />-->
 </template>
@@ -31,7 +30,6 @@ import AppMovieInformation from "@/components/AppMovieInformation/AppMovieInform
 import AppSimilarMovies from "@/components/AppMovieInformation/AppSimilarMovies";
 import { mapActions, mapGetters } from "vuex";
 import IconArrowLeft from "@/components/icons/IconArrowLeft";
-import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 import ButtonBase from "@/components/ui/ButtonBase";
 import { getFacts } from "@/api/cinema/movie/movie-information";
 

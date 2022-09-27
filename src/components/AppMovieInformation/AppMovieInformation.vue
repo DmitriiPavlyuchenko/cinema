@@ -35,7 +35,6 @@
           </span>
         </li>
         <li :class="$style['movie-buttons']">
-          <AppTrailer :movie-id="movieId" />
           <AppFavoritesButton :movie-id="movieId" />
         </li>
         <li class="movie-about-title-wrapper">
@@ -118,7 +117,6 @@ import AppFavoritesButton from "@/components/AppFavorites/AppFavoriteButton";
 import ButtonBase from "@/components/ui/ButtonBase";
 import AppTabHome from "@/components/AppMovieInformation/AppTabDescription";
 import AppTabStaffs from "@/components/AppMovieInformation/AppTabStaffs";
-import AppTrailer from "@/components/AppMovieInformation/AppTrailer";
 
 export default defineComponent({
   name: "AppMovieInformation",
@@ -127,7 +125,6 @@ export default defineComponent({
     AppFavoritesButton,
     AppTabStaffs,
     AppTabHome,
-    AppTrailer,
   },
   props: {
     movieInformation: {
