@@ -18,6 +18,10 @@ export const getTrailer = (id: number): Promise<AxiosResponse> => {
   return instance.get(API.MOVIE_INFORMATION + `${id}/videos`);
 };
 
+export const getFacts = (id: number): Promise<AxiosResponse> => {
+  return instance.get(API.MOVIE_INFORMATION + `${id}/facts`);
+};
+
 export const getTopMovies = (pageNumber: number): Promise<AxiosResponse> => {
   return instance.get(API.TOP_250_FILMS + `${pageNumber}`);
 };

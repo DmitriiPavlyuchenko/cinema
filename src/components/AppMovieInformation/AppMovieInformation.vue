@@ -19,7 +19,7 @@
         </div>
       </div>
       <ul :class="$style['movie-about-information']">
-        <li class="movie-title-wrapper">
+        <li :class="$style['movie-title-wrapper']">
           <h1 :class="$style['movie-title']">
             {{ movieInformation.nameRu }} ({{ movieInformation.year }})
           </h1>
@@ -98,12 +98,18 @@
             </ButtonBase>
           </div>
           <div :class="$style['tab-content-wrapper']">
-            <AppTabHome
-              v-if="currentTab === 'Описание'"
-              :class="$style['tab-content']"
-              :description="movieInformation.description"
-            ></AppTabHome>
-            <AppTabStaffs v-else :staff="staff"></AppTabStaffs>
+            <keep-alive>
+              <AppTabHome
+                v-if="currentTab === 'Описание'"
+                :class="$style['tab-content']"
+                :description="movieInformation.description"
+              ></AppTabHome>
+              <AppTabStaffs
+                v-else-if="currentTab === 'Актеры'"
+                :staff="staff"
+              ></AppTabStaffs>
+              <AppTabFacts v-else :movieId="movieId" />
+            </keep-alive>
           </div>
         </div>
       </div>
@@ -117,6 +123,7 @@ import AppFavoritesButton from "@/components/AppFavorites/AppFavoriteButton";
 import ButtonBase from "@/components/ui/ButtonBase";
 import AppTabHome from "@/components/AppMovieInformation/AppTabDescription";
 import AppTabStaffs from "@/components/AppMovieInformation/AppTabStaffs";
+import AppTabFacts from "@/components/AppMovieInformation/AppTabFacts";
 
 export default defineComponent({
   name: "AppMovieInformation",
@@ -125,6 +132,7 @@ export default defineComponent({
     AppFavoritesButton,
     AppTabStaffs,
     AppTabHome,
+    AppTabFacts,
   },
   props: {
     movieInformation: {
@@ -139,11 +147,15 @@ export default defineComponent({
       type: String,
       required: false,
     },
+    // facts: {
+    //   type: Object,
+    //   required: false,
+    // },
   },
   data() {
     return {
       genres: null,
-      tabs: ["Описание", "Актеры"],
+      tabs: ["Описание", "Актеры", "Факты"],
       currentTab: "Описание",
     };
   },
@@ -210,6 +222,12 @@ export default defineComponent({
   flex-direction: column;
   font-size: 0.7rem;
   color: $text-color;
+}
+
+.movie-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .main-info-wrapper > li > :first-child {

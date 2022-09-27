@@ -31,7 +31,7 @@ import AppSimilarMovies from "@/components/AppMovieInformation/AppSimilarMovies"
 import { mapActions, mapGetters } from "vuex";
 import IconArrowLeft from "@/components/icons/IconArrowLeft";
 import ButtonBase from "@/components/ui/ButtonBase";
-import { getFacts } from "@/api/cinema/movie/movie-information";
+import { SERVER_RESPONSE } from "@/constants/server-code";
 
 export default {
   name: "AppMovie",
@@ -44,6 +44,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
+      facts: [],
     };
   },
   created() {
