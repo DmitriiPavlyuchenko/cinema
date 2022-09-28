@@ -36,11 +36,13 @@ export default {
       isFilterOpen: false,
     };
   },
+  emits: ["isFilterOpen"],
   methods: {
     toggleFilter() {
       this.isFilterOpen
         ? (this.isFilterOpen = false)
         : (this.isFilterOpen = true);
+      this.$emit("isFilterOpen", this.isFilterOpen);
     },
   },
 };

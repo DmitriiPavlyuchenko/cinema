@@ -1,8 +1,8 @@
 <template>
-  <AppFilterToggle>
+  <AppFilterToggle @isFilterOpen="setValue">
     <template #button-title> Жанры </template>
   </AppFilterToggle>
-  <select v-model="picked" :class="$style.select">
+  <select v-show="toggleFilter" v-model="picked" :class="$style.select">
     <option :class="$style.option" disabled value="">Все жанры</option>
     <option v-for="genre in genres" :key="genre.value" :class="$style.option">
       {{ genre.label }}
@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      isFilterOpen: null,
       picked: "",
       genres: [
         { label: "Семейные", value: "семейный" },
@@ -49,6 +50,16 @@ export default {
       ],
     };
   },
+  computed: {
+    toggleFilter() {
+      return this.isFilterOpen;
+    },
+  },
+  methods: {
+    setValue(value) {
+      this.isFilterOpen = value;
+    },
+  },
 };
 </script>
 
@@ -60,6 +71,7 @@ export default {
   color: $black;
   border-radius: 0.3rem;
   border: 0.05rem solid $grey;
+  width: 100%;
 
   &:hover {
     border-color: $purple;

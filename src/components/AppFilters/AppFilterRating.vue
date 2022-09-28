@@ -1,8 +1,8 @@
 <template>
-  <AppFilterToggle>
+  <AppFilterToggle @isFilterOpen="setValue">
     <template #button-title> Рейтинг </template>
   </AppFilterToggle>
-  <div v-show="isFiltersOpen" :class="$style['filter-track-wrapper']">
+  <div v-show="isFilterOpen" :class="$style['filter-track-wrapper']">
     <div :class="$style['filter-value-wrapper']">
       <label :class="$style['filter-label']" for="">
         <span :class="$style['filter-title']">От</span>
@@ -56,7 +56,7 @@ export default {
   components: { AppFilterToggle },
   data() {
     return {
-      isFiltersOpen: true,
+      isFilterOpen: null,
       minPrice: 0,
       maxPrice: 10,
     };
@@ -72,6 +72,11 @@ export default {
       }
     },
   },
+  computed: {
+    toggleFilter() {
+      return this.isFilterOpen;
+    },
+  },
   methods: {
     setRangeSlider() {
       if (this.minPrice > this.maxPrice) {
@@ -79,6 +84,9 @@ export default {
         this.maxPrice = this.minPrice;
         this.minPrice = tmp;
       }
+    },
+    setValue(value) {
+      this.isFilterOpen = value;
     },
   },
 };
@@ -104,6 +112,7 @@ export default {
 .filter-value-wrapper {
   display: flex;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .filter-track-wrapper {
@@ -111,6 +120,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .filter-track {

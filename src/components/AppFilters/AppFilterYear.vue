@@ -1,8 +1,8 @@
 <template>
-  <AppFilterToggle>
+  <AppFilterToggle @isFilterOpen="setValue">
     <template #button-title>Год выхода</template>
   </AppFilterToggle>
-  <div :class="$style['radio']">
+  <div v-show="toggleFilter" :class="$style['radio']">
     <label :class="$style['radio-wrapper']">
       <InputBase
         v-model="check"
@@ -37,7 +37,18 @@ export default {
   data() {
     return {
       check: "",
+      isFilterOpen: null,
     };
+  },
+  computed: {
+    toggleFilter() {
+      return this.isFilterOpen;
+    },
+  },
+  methods: {
+    setValue(value) {
+      this.isFilterOpen = value;
+    },
   },
 };
 </script>
