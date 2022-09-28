@@ -46,7 +46,6 @@ export default {
         const response = await getFacts(id);
         if (response.status === SERVER_RESPONSE.CODE_200) {
           this.facts = response.data.items.map((string) => {
-            console.log(string);
             return removeLinksFromString(string.text);
           });
         }

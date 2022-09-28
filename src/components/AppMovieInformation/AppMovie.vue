@@ -12,17 +12,18 @@
       <span>Назад</span>
     </ButtonBase>
   </div>
-  <div :class="$style.movie">
-    <div :class="$style['movie-information-wrapper']">
-      <AppMovieInformation
-        :class="$style['movie-information']"
-        :movie-id="this.$route.params.id"
-        :movieInformation="movieInformation"
-        :staff="staff"
-      />
-    </div>
-  </div>
+  <!--  <div :class="$style.movie">-->
+  <!--    <div :class="$style['movie-information-wrapper']">-->
+  <!--      <AppMovieInformation-->
+  <!--        :class="$style['movie-information']"-->
+  <!--        :movie-id="this.$route.params.id"-->
+  <!--        :movieInformation="movieInformation"-->
+  <!--        :staff="staff"-->
+  <!--      />-->
+  <!--    </div>-->
+  <!--  </div>-->
   <!--  <AppSimilarMovies :similarMovies="similarMovies" />-->
+  <AppReviews :movieId="this.$route.params.id" />
 </template>
 
 <script>
@@ -32,19 +33,20 @@ import { mapActions, mapGetters } from "vuex";
 import IconArrowLeft from "@/components/icons/IconArrowLeft";
 import ButtonBase from "@/components/ui/ButtonBase";
 import { SERVER_RESPONSE } from "@/constants/server-code";
+import AppReviews from "@/components/AppMovieInformation/AppReviews";
+import { getReviews } from "@/api/cinema/movie/movie-information";
 
 export default {
   name: "AppMovie",
   components: {
+    AppReviews,
     ButtonBase,
-    AppMovieInformation,
     IconArrowLeft,
   },
-  // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformationAppSimilarMovies
+  // AppTrailer, AppSimilarMovies, AppStaff, AppMovieInformationAppSimilarMovies, AppMovieInformation
   data() {
     return {
       id: this.$route.params.id,
-      facts: [],
     };
   },
   created() {
@@ -60,9 +62,6 @@ export default {
       "similarMovies",
       "trailer",
     ]),
-    tenStaff() {
-      return this.staff.slice(0, 10);
-    },
   },
   methods: {
     ...mapActions("cinema", [

@@ -31,3 +31,7 @@ export const getTopAwaitMovies = (
 ): Promise<AxiosResponse> => {
   return instance.get(API.TOP_AWAIT_FILMS + `${pageNumber}`);
 };
+
+export const getReviews = (id: number) => {
+  return instance.get(API.MOVIE_INFORMATION + `${id}/reviews`);
+};

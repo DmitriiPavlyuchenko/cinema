@@ -7,7 +7,7 @@ const instance = axios.create({
   baseURL: API.SERVER_URL,
   headers: {
     "Access-Control-Allow-Origin": "*",
-    "X-API-KEY": "5b48cc31-a6c5-45a2-9ba7-a7def2190d4d",
+    "X-API-KEY": "cbf13414-b53e-417b-9d9d-793bc19e5557",
   },
 });
 
