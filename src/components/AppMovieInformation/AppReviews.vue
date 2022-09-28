@@ -38,14 +38,14 @@
               review.date.slice(0, 10)
             }}</span>
             <div :class="$style['review-rating']">
-              <ButtonBase :class="$style['button-rating']">
+              <ButtonBase :class="$style['button-rating']" type="button">
                 <IconBase height="18" name="like" width="18">
                   <IconLike />
                 </IconBase>
                 <span>Полезно</span>
                 <span>{{ review.positiveRating }}</span>
               </ButtonBase>
-              <ButtonBase :class="$style['button-rating']">
+              <ButtonBase :class="$style['button-rating']" type="button">
                 <IconBase height="20" name="dislike" width="20">
                   <IconDislike />
                 </IconBase>
