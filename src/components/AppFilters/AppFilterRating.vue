@@ -1,15 +1,7 @@
 <template>
-  <div :class="$style['filter-rating']" @click="openFilter">
-    <ButtonBase :class="$style['open-filter']">Рейтинг</ButtonBase>
-    <IconBase
-      :class="$style['arrow-down']"
-      height="14"
-      icon-name="arrow-down"
-      width="14"
-    >
-      <IconArrowDown />
-    </IconBase>
-  </div>
+  <AppFilterToggle>
+    <template #button-title> Рейтинг </template>
+  </AppFilterToggle>
   <div v-show="isFiltersOpen" :class="$style['filter-track-wrapper']">
     <div :class="$style['filter-value-wrapper']">
       <label :class="$style['filter-label']" for="">
@@ -57,11 +49,11 @@
 </template>
 
 <script>
-import IconArrowDown from "@/components/icons/IconArrowDown.vue";
+import AppFilterToggle from "@/components/AppFilters/AppFilterToggle";
 
 export default {
   name: "AppFilterRating",
-  components: { IconArrowDown },
+  components: { AppFilterToggle },
   data() {
     return {
       isFiltersOpen: true,
@@ -81,11 +73,6 @@ export default {
     },
   },
   methods: {
-    openFilter() {
-      this.isFiltersOpen
-        ? (this.isFiltersOpen = false)
-        : (this.isFiltersOpen = true);
-    },
     setRangeSlider() {
       if (this.minPrice > this.maxPrice) {
         const tmp = this.maxPrice;
@@ -98,13 +85,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-.filter-rating {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  justify-content: space-between;
-}
-
 .filter-label {
   display: inline-flex;
   width: 50%;
@@ -186,10 +166,4 @@ input:last-of-type::-moz-range-track {
 input[type="range"]::-moz-focus-outer {
   border: 0;
 }
-
-.arrow-down {
-  transform: rotate(180deg);
-}
 </style>
-
-<style lang="scss"></style>
