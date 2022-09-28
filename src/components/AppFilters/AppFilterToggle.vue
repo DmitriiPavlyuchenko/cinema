@@ -1,9 +1,10 @@
 <template>
-  <div :class="$style['filter-rating']" @click="openFilter">
+  <div :class="$style['filter-rating']" @click="toggleFilter">
     <ButtonBase :class="$style['open-filter']">
       <slot name="button-title"></slot>
     </ButtonBase>
     <IconBase
+      v-if="isFilterOpen"
       :class="$style['arrow-down']"
       height="14"
       icon-name="arrow-down"
@@ -11,20 +12,35 @@
     >
       <IconArrowDown />
     </IconBase>
+    <IconBase
+      v-else
+      :class="$style['arrow-down']"
+      height="14"
+      icon-name="arrow-up"
+      width="14"
+    >
+      <IconArrowUp />
+    </IconBase>
   </div>
 </template>
 
 <script>
 import IconArrowDown from "@/components/icons/IconArrowDown.vue";
+import IconArrowUp from "@/components/icons/IconArrowUp";
 
 export default {
   name: "AppFilterToggle",
-  components: { IconArrowDown },
+  components: { IconArrowUp, IconArrowDown },
+  data() {
+    return {
+      isFilterOpen: false,
+    };
+  },
   methods: {
-    openFilter() {
-      this.isFiltersOpen
-        ? (this.isFiltersOpen = false)
-        : (this.isFiltersOpen = true);
+    toggleFilter() {
+      this.isFilterOpen
+        ? (this.isFilterOpen = false)
+        : (this.isFilterOpen = true);
     },
   },
 };

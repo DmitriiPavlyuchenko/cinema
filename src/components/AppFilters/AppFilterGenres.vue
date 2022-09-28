@@ -2,9 +2,9 @@
   <AppFilterToggle>
     <template #button-title> Жанры </template>
   </AppFilterToggle>
-  <select v-model="picked">
-    <option disabled value="">Все жанры</option>
-    <option v-for="genre in genres" :key="genre.value">
+  <select v-model="picked" :class="$style.select">
+    <option :class="$style.option" disabled value="">Все жанры</option>
+    <option v-for="genre in genres" :key="genre.value" :class="$style.option">
       {{ genre.label }}
     </option>
   </select>
@@ -52,4 +52,27 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" module>
+.select {
+  height: 2rem;
+  padding: 0 0.4rem;
+  background-color: $text-color;
+  color: $black;
+  border-radius: 0.3rem;
+  border: 0.05rem solid $grey;
+
+  &:hover {
+    border-color: $purple;
+  }
+}
+
+.option {
+  &:checked {
+    background-color: $purple;
+  }
+
+  &:hover {
+    background-color: $purple;
+  }
+}
+</style>

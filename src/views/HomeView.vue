@@ -7,7 +7,6 @@
 import { defineComponent } from "vue";
 import AppPremieres from "@/components/AppPremieres.vue";
 import { mapGetters } from "vuex";
-import AppTopMovies from "@/components/AppTopMovies.vue";
 
 export default defineComponent({
   name: "HomeView",

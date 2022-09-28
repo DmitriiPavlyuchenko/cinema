@@ -1,18 +1,13 @@
 import { Module } from "vuex";
 import { RootStore } from "@/store/root-store";
 import { Cinema } from "@/store/cinema/cinema-interface";
-import { getPremiers } from "@/api/cinema/premiers/premiers";
-import { convertDateMonth } from "@/helpers/date";
 import { SERVER_RESPONSE } from "@/constants/server-code";
 import {
   getMovie,
   getSimilarMovies,
   getStaff,
-  getTopAwaitMovies,
-  getTopMovies,
   getTrailer,
 } from "@/api/cinema/movie/movie-information";
-import { generateRandomNumber } from "@/helpers/generate-random-number";
 
 export const cinemaStore: Module<Cinema, RootStore> = {
   namespaced: true,

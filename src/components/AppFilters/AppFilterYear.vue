@@ -7,6 +7,7 @@
       <InputBase
         v-model="check"
         :class="$style['radio-check']"
+        checked
         name="sort"
         type="radio"
         value="-1"
