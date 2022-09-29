@@ -2,6 +2,7 @@
   <form :class="$style.filters" @submit.prevent>
     <h3 class="filter-title">Фильтры</h3>
     <AppFilterChoices />
+    <AppFilterYearProduction />
     <AppFilterRating />
     <AppFilterGenres />
     <AppFilterYear />
@@ -13,10 +14,12 @@ import AppFilterChoices from "@/components/AppFilters/AppFilterChoices";
 import AppFilterRating from "@/components/AppFilters/AppFilterRating";
 import AppFilterGenres from "@/components/AppFilters/AppFilterGenres";
 import AppFilterYear from "@/components/AppFilters/AppFilterYear";
+import AppFilterYearProduction from "@/components/AppFilters/AppFilterYearProduction";
 
 export default {
   name: "AppFilters",
   components: {
+    AppFilterYearProduction,
     AppFilterYear,
     AppFilterChoices,
     AppFilterRating,

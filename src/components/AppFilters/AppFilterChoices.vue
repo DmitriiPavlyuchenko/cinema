@@ -31,6 +31,7 @@ export default {
   font-size: 0.6rem;
   border: 0.05rem solid $text-color;
   padding: 0.3rem;
+  width: fit-content;
   border-radius: 0.2rem;
 }
 </style>
