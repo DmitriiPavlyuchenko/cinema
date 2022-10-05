@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { API } from "@/constants/api";
 import { getItem } from "@/helpers/persistanceStorage";
 import { KEYS } from "@/constants/localStorage";
+import router from "@/router";
 
 const instance = axios.create({
   baseURL: API.SERVER_URL,
@@ -19,5 +20,22 @@ instance.interceptors.request.use(
     return config;
   }
 );
+
+instance.interceptors.response.use(null, (error) => {
+  let path = "/error";
+  switch (error.response.status) {
+    case 401:
+      path = "/";
+      break;
+    case 404:
+      path = "/404";
+      break;
+    case 400:
+      path = "/";
+      break;
+  }
+  router.push(path);
+  return Promise.reject(error);
+});
 
 export default instance;

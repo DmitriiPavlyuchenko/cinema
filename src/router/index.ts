@@ -5,6 +5,7 @@ import MovieView from "@/views/MovieView.vue";
 import FavoritesView from "@/views/FavoritesView.vue";
 import CartoonsView from "@/views/CartoonsView.vue";
 import SeriesView from "@/views/SeriesView.vue";
+import PageNotFoundView from "@/views/PageNotFoundView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -47,6 +48,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "favorites",
     meta: { layout: "page-layout" },
     component: FavoritesView,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "page_not_found",
+    component: PageNotFoundView,
   },
 ];
 

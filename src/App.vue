@@ -28,7 +28,6 @@ export default defineComponent({
   components: { AppFooter, AppHeader, PageTransition, MainLayout, PageLayout },
   computed: {
     layout() {
-      console.log(this.$route.meta.layout);
       return this.$route.meta.layout || "main-layout";
     },
   },
