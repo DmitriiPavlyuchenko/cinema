@@ -1,12 +1,14 @@
 <template>
-  <form :class="$style.filters" @submit.prevent>
-    <h3 class="filter-title">Фильтры</h3>
-    <AppFilterChoices />
-    <AppFilterYearProduction />
-    <AppFilterRating />
-    <AppFilterGenres />
-    <AppFilterYear />
-  </form>
+  <aside :class="$style.aside">
+    <form :class="$style.filters" @submit.prevent>
+      <h3 class="filter-title">Фильтры</h3>
+      <AppFilterChoices />
+      <AppFilterYearProduction />
+      <AppFilterRating />
+      <AppFilterGenres />
+      <AppFilterYear />
+    </form>
+  </aside>
 </template>
 
 <script>
@@ -29,10 +31,14 @@ export default {
 </script>
 
 <style lang="scss" module>
+.aside {
+  width: 20%;
+}
+
 .filters {
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
-  width: 20%;
+  width: 100%;
 }
 </style>

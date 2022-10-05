@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
-import AppSerials from "@/components/AppSerials.vue";
 import AppSettings from "@/components/AppSettings.vue";
 import AppMovie from "@/components/AppMovieInformation/AppMovie.vue";
 import MovieView from "@/views/MovieView.vue";
@@ -12,21 +10,25 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    meta: { layout: "main-layout" },
+    component: () => import("@/views/HomeView.vue"),
   },
   {
     path: "/movies",
     name: "movies",
+    meta: { layout: "page-layout" },
     component: MovieView,
   },
   {
     path: "/series",
     name: "series",
+    meta: { layout: "page-layout" },
     component: SeriesView,
   },
   {
     path: "/settings",
     name: "settings",
+    meta: { layout: "page-layout" },
     component: AppSettings,
   },
   {
@@ -37,11 +39,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/cartoons",
     name: "cartoons",
+    meta: { layout: "page-layout" },
     component: CartoonsView,
   },
   {
     path: "/favorites",
     name: "favorites",
+    meta: { layout: "page-layout" },
     component: FavoritesView,
   },
 ];
