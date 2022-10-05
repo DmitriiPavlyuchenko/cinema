@@ -110,11 +110,6 @@ export default defineComponent({
   flex-direction: column;
 }
 
-.modal-button {
-  color: $black;
-  display: inline-block;
-}
-
 .modal-close {
   position: absolute;
   color: $black;

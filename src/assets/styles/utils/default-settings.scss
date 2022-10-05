@@ -10,7 +10,8 @@ body, html {
   font-family: $main-font;
   font-weight: $main-font-weight;
   font-size: $main-font-size;
-  color: $text-color;
+  color: $black;
+  background-color: $lite-grey;
 }
 
 html,
@@ -31,7 +32,6 @@ body {
 
 main {
   flex: 1 1 auto;
-  background-color: $background-color;
 }
 
 footer {

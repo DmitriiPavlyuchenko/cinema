@@ -10,7 +10,9 @@
       </li>
     </ListTransition>
   </ul>
-  <span v-else class="list-empty">Список избранных фильмов пустой</span>
+  <div v-else :class="$style['list-empty']">
+    <span> Список избранных фильмов пустой </span>
+  </div>
 </template>
 
 <script>
@@ -82,5 +84,11 @@ export default {
   box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem $purple;
   border-radius: 0.5rem;
   background-color: rgba(77, 77, 77, 0.53);
+}
+
+.list-empty {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
 }
 </style>

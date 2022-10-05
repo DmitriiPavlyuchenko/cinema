@@ -187,6 +187,7 @@ export default {
     opacity: 0.5;
     z-index: 160;
     padding-left: 0.2rem;
+    color: $text-color;
     transition: 0.3s;
   }
 

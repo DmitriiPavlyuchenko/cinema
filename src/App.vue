@@ -45,6 +45,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 5rem 0;
+  padding: 5rem 1rem;
+  background-color: $text-color;
 }
 </style>
